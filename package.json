@@ -2,10 +2,18 @@
   "name": "react-animation-suite",
   "version": "0.0.1",
   "description": "This package contains animation components which are easy to use and implement for a React JS developer",
-  "keywords": ["animation", "react", "reactjs", "transition", "transition", "carousel", "slider"],
-  "main": "dist/react-animation-suite.umd.js",
-  "module": "dist/react-animation-suite.es5.js",
-  "typings": "dist/types/react-animation-suite.d.ts",
+  "keywords": [
+    "animation",
+    "react",
+    "reactjs",
+    "transition",
+    "transition",
+    "carousel",
+    "slider"
+  ],
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es5.js",
+  "typings": "dist/types/index.d.ts",
   "files": [
     "dist"
   ],
@@ -79,6 +87,9 @@
   "devDependencies": {
     "@types/jest": "^22.0.0",
     "@types/node": "^10.0.3",
+    "@types/react": "^16.4.8",
+    "@types/react-dom": "^16.0.7",
+    "@types/react-transition-group": "^2.0.13",
     "colors": "^1.1.2",
     "commitizen": "^2.9.6",
     "coveralls": "^3.0.0",
@@ -107,5 +118,10 @@
     "typedoc": "^0.11.0",
     "typescript": "^2.6.2",
     "validate-commit-msg": "^2.12.2"
+  },
+  "dependencies": {
+    "react": "^16.4.2",
+    "react-jss": "^8.6.1",
+    "react-transition-group": "^2.4.0"
   }
 }

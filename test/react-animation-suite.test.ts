@@ -1,4 +1,4 @@
-import DummyClass from '../src/react-animation-suite'
+import { Slider } from '../src/index'
 
 /**
  * Dummy test
@@ -9,6 +9,6 @@ describe('Dummy test', () => {
   })
 
   it('DummyClass is instantiable', () => {
-    expect(new DummyClass()).toBeInstanceOf(DummyClass)
+    expect(new Slider()).toBeInstanceOf(Slider)
   })
 })
