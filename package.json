@@ -20,7 +20,7 @@
   "author": "Vineet Dev <vineetdev2008@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/devin6391/react-animation-suite.git"
+    "url": "git@github.com:devin6391/react-animation-suite.git"
   },
   "license": "MIT",
   "engines": {
@@ -42,7 +42,8 @@
     "precommit": "lint-staged",
     "travis-deploy-once": "travis-deploy-once",
     "prepush": "npm run test:prod && npm run build",
-    "commitmsg": "validate-commit-msg"
+    "commitmsg": "validate-commit-msg",
+    "unsafe-git-push": "git push origin master --no-verify"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
@@ -81,7 +82,8 @@
         "statements": 95
       }
     },
-    "collectCoverage": true
+    "collectCoverage": true,
+    "testURL": "http://localhost/"
   },
   "prettier": {
     "semi": false,
