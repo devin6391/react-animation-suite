@@ -1,6 +1,5 @@
 import * as React from "react";
-import sliderStyles from "./styles";
-import injectSheet from "react-jss";
+import getSliderStyles from "./styles";
 import TransitioningComponent from "./TransitioningComponent";
 import { ISliderChildStyles, ISliderDirection } from "./types";
 
@@ -8,7 +7,6 @@ interface ISliderProps {
   watchProp: any; // The property to watch on which sliding will occur. This must be a literal value.
   childProps: any; // The properties of child element.
   direction: ISliderDirection; // The direction in which this change's sliding effect should go.
-  classes: any; // These are passed from JSS so it should be null, no support for external classes for now.
   children: JSX.Element; // This child JSX element wrapped in Slider component on which sliding effect will happen.
   childStyles: ISliderChildStyles; // Some styles of children, which includes width, height and transition timing related styles.
   slideOnAppear?: boolean; // If we want the sliding effect when we first see the screen.
@@ -23,7 +21,17 @@ interface ISliderState {
   nextChildProps: any; // new properties of child.
 }
 
-class Slider extends React.Component<ISliderProps, ISliderState> {
+/**
+ * @prop watchProp - The property to watch if on which sliding will occur. This must be a literal value.
+ * @prop childProps - The properties of child element.
+ * @prop direction - The direction in which this change's sliding effect should go.
+ * @prop children - This child JSX element wrapped in Slider component on which sliding effect will happen.
+ * @prop childStyles - Some styles of children, which includes width, height and transition timing related styles.
+ * @prop slideOnAppear - If we want the sliding effect when we first see the screen. Optional Prop.
+ * @prop fadeOnSlide - Should the slide fade on entering or exiting. Optional Prop.
+ * @prop sizePercentageDuringSlide - Percentage of size which should be there even if exit/enter is done. Useful only with fadeOnSlide prop. Optional Prop.
+ */
+export default class Slider extends React.Component<ISliderProps, ISliderState> {
   constructor(props: ISliderProps) {
     super(props);
     this.state = {
@@ -60,7 +68,6 @@ class Slider extends React.Component<ISliderProps, ISliderState> {
     } = this.state;
     const {
       direction,
-      classes,
       childStyles,
       slideOnAppear,
       fadeOnSlide,
@@ -82,7 +89,6 @@ class Slider extends React.Component<ISliderProps, ISliderState> {
       clonedElems.push(
         <TransitioningComponent
           enter={true}
-          classes={classes}
           direction={direction}
           key={nextWatchProp}
           appear={slideOnAppear || !!prevWatchProp}
@@ -101,7 +107,6 @@ class Slider extends React.Component<ISliderProps, ISliderState> {
       clonedElems.push(
         <TransitioningComponent
           enter={false}
-          classes={classes}
           direction={direction}
           key={prevWatchProp}
           appear={true}
@@ -119,31 +124,15 @@ class Slider extends React.Component<ISliderProps, ISliderState> {
 
   render() {
     const { width, height } = this.props.childStyles;
+    const rtgListStyles = getSliderStyles().rtgList;
+    const styles = {...rtgListStyles, width, height};
     return (
       <div
         ref={elem => (this.selfRef = elem)}
-        className={this.props.classes.rtgList}
-        style={{
-          width,
-          height
-        }}
+        style={styles}
       >
         {this.getCLonedElems()}
       </div>
     );
   }
 }
-
-/**
- * @prop watchProp - The property to watch if on which sliding will occur. This must be a literal value.
- * @prop childProps - The properties of child element.
- * @prop direction - The direction in which this change's sliding effect should go.
- * @prop classes - These are passed from JSS so it should be null, no support for external classes for now.
- * @prop children - This child JSX element wrapped in Slider component on which sliding effect will happen.
- * @prop childStyles - Some styles of children, which includes width, height and transition timing related styles.
- * @prop slideOnAppear - If we want the sliding effect when we first see the screen. Optional Prop.
- * @prop fadeOnSlide - Should the slide fade on entering or exiting. Optional Prop.
- * @prop sizePercentageDuringSlide - Percentage of size which should be there even if exit/enter is done. Useful only with fadeOnSlide prop. Optional Prop.
- */
-const StyledSlider = injectSheet(sliderStyles)(Slider);
-export default StyledSlider;

@@ -1,6 +1,11 @@
-import { StyleSheet } from 'react-jss'
+import * as React from 'react'
 
-const sliderStyles: StyleSheet<any> = {
+export interface ISliderCss {
+  rtgList: React.CSSProperties
+  rtgWrapper: React.CSSProperties
+}
+
+const getSliderStyles = (): ISliderCss => ({
   rtgList: {
     display: 'flex',
     position: 'relative',
@@ -11,6 +16,6 @@ const sliderStyles: StyleSheet<any> = {
     left: 0,
     right: 0
   }
-}
+})
 
-export default sliderStyles
+export default getSliderStyles

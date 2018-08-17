@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Transition } from "react-transition-group";
+import getSliderStyles from "./styles";
 import {
   ISliderChildStyles,
   ISliderDirection,
@@ -9,7 +10,6 @@ import {
 
 interface ITransitioningComponentProps {
   enter: any; // If true then this will enter in screen.
-  classes: any; // JSS classes.
   direction: ISliderDirection; // Direction in which transition should take place.
   appear: any; // Should appear on first.
   children: any; // The child JSX passed to render
@@ -160,6 +160,11 @@ export default class TransitioningComponent extends React.Component<
     }
   }
 
+  private get cssWrapperStyle(): React.CSSProperties {
+    const rtgWrapperStyles = getSliderStyles().rtgWrapper;
+    return {...rtgWrapperStyles, width: this.props.childStyles.width};
+  }
+
   // Getter method to calculate all css styles to be applied on child.
   private getWrapperStyles(
     transform: string,
@@ -173,10 +178,8 @@ export default class TransitioningComponent extends React.Component<
   render() {
     let {
       enter,
-      classes,
       appear,
       children,
-      childStyles,
       fadeOnSlide,
       timeout
     } = this.props;
@@ -190,6 +193,9 @@ export default class TransitioningComponent extends React.Component<
     const exitingTransform = this.exitingTransform;
     const sliderEnterTimingFunction = this.sliderEnterTimingFunction;
     const sliderExitTimingFunction = this.sliderExitTimingFunction;
+
+    // normal wrapper styles
+    const cssWrapperStyle = this.cssWrapperStyle;
 
     return (
       <Transition in={enter} timeout={timeout} appear={appear}>
@@ -231,8 +237,10 @@ export default class TransitioningComponent extends React.Component<
           }
           return (
             <div
-              className={classes.rtgWrapper}
-              style={{ ...wrapperStyles, width: childStyles.width }}
+              style={{
+                ...(wrapperStyles as React.CSSProperties), 
+                ...cssWrapperStyle
+              }}
             >
               {children}
             </div>
