@@ -1,6 +1,6 @@
 {
   "name": "react-animation-suite",
-  "version": "0.0.0-development",
+  "version": "0.0.1",
   "description": "This package contains animation components which are easy to use and implement for a React JS developer",
   "keywords": [
     "animation",
@@ -29,7 +29,7 @@
   "scripts": {
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
+    "build": "tsc --module commonjs && rollup -c rollup.config.ts",
     "start": "rollup -c rollup.config.ts -w",
     "test": "jest",
     "test:watch": "jest --watch",
