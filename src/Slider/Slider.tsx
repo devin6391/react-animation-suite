@@ -64,9 +64,19 @@ class Slider extends React.Component<ISliderProps, ISliderState> {
       childStyles,
       slideOnAppear,
       fadeOnSlide,
-      sizePercentageDuringSlide
+      sizePercentageDuringSlide,
+      children
     } = this.props;
     let clonedElems = [];
+    if(!React.isValidElement(children)) {
+      throw new Error("Wrapped child is not a valid react element");
+    }
+    if(Array.isArray(children)) {
+      throw new Error("Only single child can be passed in slider component");
+    }
+    if(typeof children === "string") {
+      throw new Error("Wrapped child cannot be string, it should be a single react element");
+    }
     nextWatchProp &&
       nextChildProps &&
       clonedElems.push(
@@ -82,7 +92,7 @@ class Slider extends React.Component<ISliderProps, ISliderState> {
           sizePercentageDuringSlide={sizePercentageDuringSlide}
           timeout={1}
         >
-          {React.cloneElement(this.props.children, nextChildProps)}
+          {React.cloneElement(children, nextChildProps)}
         </TransitioningComponent>
       );
     prevWatchProp &&
@@ -101,7 +111,7 @@ class Slider extends React.Component<ISliderProps, ISliderState> {
           sizePercentageDuringSlide={sizePercentageDuringSlide}
           timeout={1}
         >
-          {React.cloneElement(this.props.children, prevChildProps)}
+          {React.cloneElement(children, prevChildProps)}
         </TransitioningComponent>
       );
     return clonedElems;

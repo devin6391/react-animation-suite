@@ -14,8 +14,11 @@
     "declarationDir": "dist/types",
     "outDir": "dist/lib",
     "typeRoots": [
+      "typings",
       "node_modules/@types"
-    ]
+    ],
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
   },
   "include": [
     "src"
