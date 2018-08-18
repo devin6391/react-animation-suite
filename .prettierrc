@@ -1,4 +1,4 @@
 {
-    "tslintIntegration": true
+  "tslintIntegration": true,
+  "trailingComma": "all"
 }
-  

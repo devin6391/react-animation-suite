@@ -1,12 +1,12 @@
 import * as React from "react";
 import getSliderStyles from "./styles";
 import TransitioningComponentChild, {
-  ITransitioningComponentChildProps,
+  ITransitioningComponentChildProps
 } from "./TransitioningComponentChild";
 import {
   ISliderChildStyles,
   ISliderDirection,
-  TransitionStateTypes,
+  TransitionStateTypes
 } from "./types";
 import { Transition } from "react-transition-group";
 
@@ -40,13 +40,13 @@ export default class TransitioningComponent extends React.Component<
       sliderExitTimingFunction: this.sliderExitTimingFunction,
       sliderTransitionEnterTime: this.sliderTransitionEnterTime,
       sliderTransitionExitTime: this.sliderTransitionExitTime,
-      wrapperTransformCenter: this.wrapperTransformCenter,
+      wrapperTransformCenter: this.wrapperTransformCenter
     };
 
     const renderState = (state: TransitionStateTypes) => {
       return this.renderTransitioningChild({
         ...partialTransitioningComponentChildProps,
-        state,
+        state
       });
     };
 
@@ -63,7 +63,8 @@ export default class TransitioningComponent extends React.Component<
     const { parentRef, childStyles } = this.props;
     let sliderElemMargin = 0;
     if (parentRef && parentRef.parentElement) {
-      sliderElemMargin = parentRef.parentElement.offsetWidth - childStyles.width;
+      sliderElemMargin =
+        parentRef.parentElement.offsetWidth - childStyles.width;
     }
     return sliderElemMargin;
   }
@@ -137,7 +138,7 @@ export default class TransitioningComponent extends React.Component<
     const time = exitTransitionTime || transitionTime;
     if (!time) {
       throw new Error(
-        "Either exitTransitionTime or transitionTime should be present as props",
+        "Either exitTransitionTime or transitionTime should be present as props"
       );
     }
     return time + "s";
@@ -149,7 +150,7 @@ export default class TransitioningComponent extends React.Component<
     const time = enterTransitionTime || transitionTime;
     if (!time) {
       throw new Error(
-        "Either enterTransitionTime or transitionTime should be present as props",
+        "Either enterTransitionTime or transitionTime should be present as props"
       );
     }
     return time + "s";
@@ -209,8 +210,10 @@ export default class TransitioningComponent extends React.Component<
   }
 
   private renderTransitioningChild(
-    transitioningComponentChildProps: ITransitioningComponentChildProps,
+    transitioningComponentChildProps: ITransitioningComponentChildProps
   ): JSX.Element {
-    return <TransitioningComponentChild {...transitioningComponentChildProps} />;
+    return (
+      <TransitioningComponentChild {...transitioningComponentChildProps} />
+    );
   }
 }

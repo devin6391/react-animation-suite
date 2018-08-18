@@ -17,7 +17,7 @@ export interface ITransitioningComponentChildProps {
 }
 
 export default function TransitioningComponentChild(
-  props: ITransitioningComponentChildProps,
+  props: ITransitioningComponentChildProps
 ) {
   let wrapperStyles: IWrapperStyles;
   switch (props.state) {
@@ -25,7 +25,7 @@ export default function TransitioningComponentChild(
       wrapperStyles = getWrapperStyles(
         props.enteringTransform,
         "0",
-        props.fadeOnSlide ? 0 : 1,
+        props.fadeOnSlide ? 0 : 1
       );
       break;
     case "entered":
@@ -33,7 +33,7 @@ export default function TransitioningComponentChild(
         props.wrapperTransformCenter,
         props.sliderTransitionEnterTime,
         1,
-        props.sliderEnterTimingFunction,
+        props.sliderEnterTimingFunction
       );
       break;
     case "exiting":
@@ -44,7 +44,7 @@ export default function TransitioningComponentChild(
         props.exitingTransform,
         props.sliderTransitionExitTime,
         props.fadeOnSlide ? 0 : 1,
-        props.sliderExitTimingFunction,
+        props.sliderExitTimingFunction
       );
       break;
     default:

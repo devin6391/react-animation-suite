@@ -45,13 +45,13 @@ export default class Slider extends React.Component<
 > {
   public static getDerivedStateFromProps(
     nextProps: ISliderProps,
-    prevState: ISliderState,
+    prevState: ISliderState
   ) {
     return {
       nextChildProps: nextProps.childProps,
       nextWatchProp: nextProps.watchProp,
       prevChildProps: prevState.nextChildProps,
-      prevWatchProp: prevState.nextWatchProp,
+      prevWatchProp: prevState.nextWatchProp
     };
   }
 
@@ -63,7 +63,7 @@ export default class Slider extends React.Component<
       nextChildProps: null,
       nextWatchProp: null,
       prevChildProps: null,
-      prevWatchProp: null,
+      prevWatchProp: null
     };
   }
 
@@ -72,7 +72,7 @@ export default class Slider extends React.Component<
     const rtgListStyles = getSliderStyles().rtgList;
     const styles = { ...rtgListStyles, width, height };
     return (
-      <div ref={(elem) => (this.selfRef = elem)} style={styles}>
+      <div ref={elem => (this.selfRef = elem)} style={styles}>
         {this.getCLonedElems()}
       </div>
     );
@@ -87,7 +87,7 @@ export default class Slider extends React.Component<
       prevWatchProp,
       prevChildProps,
       nextWatchProp,
-      nextChildProps,
+      nextChildProps
     } = this.state;
     const {
       direction,
@@ -95,7 +95,7 @@ export default class Slider extends React.Component<
       slideOnAppear,
       fadeOnSlide,
       sizePercentageDuringSlide,
-      children,
+      children
     } = this.props;
     const clonedElems = [];
     if (!React.isValidElement(children)) {
@@ -106,7 +106,7 @@ export default class Slider extends React.Component<
     }
     if (typeof children === "string") {
       throw new Error(
-        "Wrapped child cannot be string, it should be a single react element",
+        "Wrapped child cannot be string, it should be a single react element"
       );
     }
     if (nextWatchProp && nextChildProps) {
@@ -123,7 +123,7 @@ export default class Slider extends React.Component<
           timeout={1}
         >
           {React.cloneElement(children, nextChildProps)}
-        </TransitioningComponent>,
+        </TransitioningComponent>
       );
     }
     if (prevWatchProp && prevWatchProp !== nextWatchProp && prevChildProps) {
@@ -140,9 +140,9 @@ export default class Slider extends React.Component<
           timeout={1}
         >
           {React.cloneElement(children, prevChildProps)}
-        </TransitioningComponent>,
+        </TransitioningComponent>
       );
     }
     return clonedElems;
-  }
+  };
 }
