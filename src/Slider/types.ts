@@ -25,10 +25,14 @@ export const enum ISliderDirection {
 }
 
 export interface IWrapperStyles {
-  transform: string // CSS transform property.
-  transition: string // CSS transition property.
-  opacity: number // CSS opacity property.
-  transitionTimingFunction?: string // CSS transition-timing-function property.
+  // CSS transform property.
+  transform: string
+  // CSS transition property.
+  transition: string
+  // CSS opacity property.
+  opacity: number
+  // CSS transition-timing-function property.
+  transitionTimingFunction?: string
 }
 
 export type TransitionStateTypes = 'enter' | 'entering' | 'entered' | 'exit' | 'exiting' | 'exited'
