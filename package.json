@@ -1,6 +1,6 @@
 {
   "name": "react-animation-suite",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "This package contains animation components which are easy to use and implement for a React JS developer",
   "keywords": [
     "animation",
@@ -129,6 +129,7 @@
   "dependencies": {
     "react": "^16.4.2",
     "react-jss": "^8.6.1",
-    "react-transition-group": "^2.4.0"
+    "react-transition-group": "^2.4.0",
+    "rollup-plugin-node-builtins": "^2.1.2"
   }
 }
