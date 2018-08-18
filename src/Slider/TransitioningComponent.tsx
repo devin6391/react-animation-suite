@@ -20,6 +20,7 @@ interface ITransitioningComponentProps {
   fadeOnSlide?: boolean; // Should it fade with transitions.
   sizePercentageDuringSlide?: number; // % of size which should be in screen. Useful only with fadeOnSlide prop.
   timeout: number; // Timeout under which transition should happen.
+  transitionEndCallback?: () => void; // Callback telling end of transition.
 }
 
 export default class TransitioningComponent extends React.Component<
@@ -51,7 +52,12 @@ export default class TransitioningComponent extends React.Component<
     };
 
     return (
-      <Transition in={enter} timeout={timeout} appear={appear}>
+      <Transition
+        in={enter}
+        timeout={timeout}
+        appear={appear}
+        addEndListener={this.addEndListener}
+      >
         {renderState}
       </Transition>
     );
@@ -204,11 +210,13 @@ export default class TransitioningComponent extends React.Component<
     }
   }
 
+  // Get the wrapper css style, non dependent on state of transition.
   private get cssWrapperStyle(): React.CSSProperties {
     const rtgWrapperStyles = getSliderStyles().rtgWrapper;
     return { ...rtgWrapperStyles, width: this.props.childStyles.width };
   }
 
+  // Abstraction of rendering child element. Used inside JSX rendering of child elem.
   private renderTransitioningChild(
     transitioningComponentChildProps: ITransitioningComponentChildProps
   ): JSX.Element {
@@ -216,4 +224,19 @@ export default class TransitioningComponent extends React.Component<
       <TransitioningComponentChild {...transitioningComponentChildProps} />
     );
   }
+
+  // Transition complete function
+  // tslint:disable-next-line:no-shadowed-variable
+  private addEndListener = (node: HTMLElement, done: () => void) => {
+    node.addEventListener(
+      "transitionend",
+      () => {
+        done();
+        if (this.props.transitionEndCallback) {
+          this.props.transitionEndCallback();
+        }
+      },
+      false
+    );
+  };
 }

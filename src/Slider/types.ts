@@ -36,3 +36,9 @@ export interface IWrapperStyles {
 }
 
 export type TransitionStateTypes = "enter" | "entering" | "entered" | "exit" | "exiting" | "exited";
+
+export const enum SliderCycleState {
+  Start = "start",
+  Half = "half",
+  Full = "full",
+}

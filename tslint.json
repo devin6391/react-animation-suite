@@ -16,6 +16,7 @@
     ]
   },
   "rules": {
-    "ordered-imports": false
+    "ordered-imports": false,
+    "no-console": [true, "log", "error"]
   }
 }
