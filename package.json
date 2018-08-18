@@ -1,6 +1,6 @@
 {
   "name": "react-animation-suite",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "This package contains animation components which are easy to use and implement for a React JS developer",
   "keywords": [
     "animation",
@@ -119,8 +119,8 @@
     "ts-jest": "^22.0.0",
     "ts-node": "^6.0.0",
     "tslint": "^5.8.0",
-    "tslint-config-standard": "^7.0.0",
     "tslint-config-prettier": "^1.10.0",
+    "tslint-config-standard": "^7.0.0",
     "tslint-react": "^3.2.0",
     "typedoc": "^0.11.0",
     "typescript": "^3.0.0",
