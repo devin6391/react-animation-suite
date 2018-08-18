@@ -8,12 +8,12 @@ export interface ISliderCss {
 const getSliderStyles = (): ISliderCss => ({
   rtgList: {
     display: 'flex',
-    position: 'relative',
-    margin: 'auto'
+    margin: 'auto',
+    position: 'relative'
   },
   rtgWrapper: {
-    position: 'absolute',
     left: 0,
+    position: 'absolute',
     right: 0
   }
 })

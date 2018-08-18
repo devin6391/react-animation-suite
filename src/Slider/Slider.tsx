@@ -4,14 +4,22 @@ import TransitioningComponent from "./TransitioningComponent";
 import { ISliderChildStyles, ISliderDirection } from "./types";
 
 interface ISliderProps {
-  watchProp: any; // The property to watch on which sliding will occur. This must be a literal value.
-  childProps: any; // The properties of child element.
-  direction: ISliderDirection; // The direction in which this change's sliding effect should go.
-  children: JSX.Element; // This child JSX element wrapped in Slider component on which sliding effect will happen.
-  childStyles: ISliderChildStyles; // Some styles of children, which includes width, height and transition timing related styles.
-  slideOnAppear?: boolean; // If we want the sliding effect when we first see the screen.
-  fadeOnSlide?: boolean; // Should the slide fade on entering or exiting.
-  sizePercentageDuringSlide?: number; // Percentage of size which should be there even if exit/enter is done. Useful only with fadeOnSlide prop.
+  // The property to watch on which sliding will occur. This must be a literal value.
+  watchProp: any;
+  // The properties of child element.
+  childProps: any;
+  // The direction in which this change's sliding effect should go.
+  direction: ISliderDirection;
+  // This child JSX element wrapped in Slider component on which sliding effect will happen.
+  children: JSX.Element;
+  // Some styles of children, which includes width, height and transition timing related styles.
+  childStyles: ISliderChildStyles;
+  // If we want the sliding effect when we first see the screen.
+  slideOnAppear?: boolean;
+  // Should the slide fade on entering or exiting.
+  fadeOnSlide?: boolean;
+  // Percentage of size which should be there even if exit/enter is done. Useful only with fadeOnSlide prop.
+  sizePercentageDuringSlide?: number;
 }
 
 interface ISliderState {
@@ -29,42 +37,57 @@ interface ISliderState {
  * @prop childStyles - Some styles of children, which includes width, height and transition timing related styles.
  * @prop slideOnAppear - If we want the sliding effect when we first see the screen. Optional Prop.
  * @prop fadeOnSlide - Should the slide fade on entering or exiting. Optional Prop.
- * @prop sizePercentageDuringSlide - Percentage of size which should be there even if exit/enter is done. Useful only with fadeOnSlide prop. Optional Prop.
+ * @prop sizePercentageDuringSlide - % of size which should be on screen. Useful only with fadeOnSlide prop. Optional.
  */
-export default class Slider extends React.Component<ISliderProps, ISliderState> {
-  constructor(props: ISliderProps) {
-    super(props);
-    this.state = {
-      prevWatchProp: null,
-      prevChildProps: null,
-      nextWatchProp: null,
-      nextChildProps: null
+export default class Slider extends React.Component<
+  ISliderProps,
+  ISliderState
+> {
+  public static getDerivedStateFromProps(
+    nextProps: ISliderProps,
+    prevState: ISliderState,
+  ) {
+    return {
+      nextChildProps: nextProps.childProps,
+      nextWatchProp: nextProps.watchProp,
+      prevChildProps: prevState.nextChildProps,
+      prevWatchProp: prevState.nextWatchProp,
     };
   }
 
   private selfRef: HTMLDivElement | null = null;
 
-  static getDerivedStateFromProps(
-    nextProps: ISliderProps,
-    prevState: ISliderState
-  ) {
-    return {
-      prevWatchProp: prevState.nextWatchProp,
-      prevChildProps: prevState.nextChildProps,
-      nextWatchProp: nextProps.watchProp,
-      nextChildProps: nextProps.childProps
+  constructor(props: ISliderProps) {
+    super(props);
+    this.state = {
+      nextChildProps: null,
+      nextWatchProp: null,
+      prevChildProps: null,
+      prevWatchProp: null,
     };
   }
 
+  public render() {
+    const { width, height } = this.props.childStyles;
+    const rtgListStyles = getSliderStyles().rtgList;
+    const styles = { ...rtgListStyles, width, height };
+    return (
+      <div ref={(elem) => (this.selfRef = elem)} style={styles}>
+        {this.getCLonedElems()}
+      </div>
+    );
+  }
+
   /**
-   * This method makes two clones of child. One with current properties which will enter and another with previous properties which will exit.
+   * This method makes two clones of child.
+   * One with current properties which will enter and another with previous properties which will exit.
    */
   private getCLonedElems = () => {
     const {
       prevWatchProp,
       prevChildProps,
       nextWatchProp,
-      nextChildProps
+      nextChildProps,
     } = this.state;
     const {
       direction,
@@ -72,20 +95,21 @@ export default class Slider extends React.Component<ISliderProps, ISliderState> 
       slideOnAppear,
       fadeOnSlide,
       sizePercentageDuringSlide,
-      children
+      children,
     } = this.props;
-    let clonedElems = [];
-    if(!React.isValidElement(children)) {
+    const clonedElems = [];
+    if (!React.isValidElement(children)) {
       throw new Error("Wrapped child is not a valid react element");
     }
-    if(Array.isArray(children)) {
+    if (Array.isArray(children)) {
       throw new Error("Only single child can be passed in slider component");
     }
-    if(typeof children === "string") {
-      throw new Error("Wrapped child cannot be string, it should be a single react element");
+    if (typeof children === "string") {
+      throw new Error(
+        "Wrapped child cannot be string, it should be a single react element",
+      );
     }
-    nextWatchProp &&
-      nextChildProps &&
+    if (nextWatchProp && nextChildProps) {
       clonedElems.push(
         <TransitioningComponent
           enter={true}
@@ -99,11 +123,10 @@ export default class Slider extends React.Component<ISliderProps, ISliderState> 
           timeout={1}
         >
           {React.cloneElement(children, nextChildProps)}
-        </TransitioningComponent>
+        </TransitioningComponent>,
       );
-    prevWatchProp &&
-      prevWatchProp !== nextWatchProp &&
-      prevChildProps &&
+    }
+    if (prevWatchProp && prevWatchProp !== nextWatchProp && prevChildProps) {
       clonedElems.push(
         <TransitioningComponent
           enter={false}
@@ -117,22 +140,9 @@ export default class Slider extends React.Component<ISliderProps, ISliderState> 
           timeout={1}
         >
           {React.cloneElement(children, prevChildProps)}
-        </TransitioningComponent>
+        </TransitioningComponent>,
       );
+    }
     return clonedElems;
-  };
-
-  render() {
-    const { width, height } = this.props.childStyles;
-    const rtgListStyles = getSliderStyles().rtgList;
-    const styles = {...rtgListStyles, width, height};
-    return (
-      <div
-        ref={elem => (this.selfRef = elem)}
-        style={styles}
-      >
-        {this.getCLonedElems()}
-      </div>
-    );
   }
 }
