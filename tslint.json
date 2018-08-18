@@ -1,6 +1,20 @@
 {
   "extends": [
     "tslint-config-standard",
-    "tslint-config-prettier"
-  ]
+    "tslint-config-prettier",
+    "tslint:recommended",
+    "tslint-react"
+  ],
+  "linterOptions": {
+    "exclude": [
+      "tools/**/*.ts",
+      "node_modules/**/*.ts",
+      "coverage/lcov-report/*.js",
+      "dist/**/*.js",
+      "(^((?!.*(src/)).).*(spec|test)\\.ts.*$)"
+    ]
+  },
+  "rules": {
+    "ordered-imports": false
+  }
 }
