@@ -44,8 +44,10 @@ Now you can slide the WannabeSlider like this:
 ### Tech
 
 * [ReactJS] - Obvious!
-* [React Transition Group] - This library internally is being used internally. And rather than making a React wrapper of some existing javascript animation library, we try to create animations on pure css or javascript.
-* [Typescript] - This won't be downloaded as dependency, but just to point out - I am using typescript and I would suggest other developers to use typescript.
+* [React Transition Group] - This library is being used internally. This is a transition state management library and is very simple. Please read about how to use this in `CONTRIBUTING.md`.
+* [Typescript] - This won't be downloaded as dependency, but just to point out - I am using typescript and I would suggest other developers to use typescript as it makes life so good!!!
+
+Note -- There is no flow implementation as of now but if someone can contribute for that, it will be great.
 
 ### Development
 Want to contribute? Great!
