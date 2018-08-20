@@ -1,6 +1,6 @@
 # React Animation Suite
 
-## Finally, An animation library which is developer friendly!
+## Finally an animation library which is developer friendly!
 This library is unopinionated about what should be the theory of animation, rather it focuses on how it should be implemented in React.
 
 ## Usage
