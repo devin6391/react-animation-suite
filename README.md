@@ -56,6 +56,8 @@ Want to contribute? Great!
 
 Please read `CONTRIBUTING.md`.
 
+#### Special thanks to [TypeScript library starter](https://github.com/alexjoverm/typescript-library-starter) for easing the process to create a library in typescript.
+
 
    [ReactJS]: <https://reactjs.org/>
    [React Transition Group]: <https://reactcommunity.org/react-transition-group/>
