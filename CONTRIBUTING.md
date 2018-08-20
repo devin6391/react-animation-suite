@@ -22,6 +22,11 @@ Always run `npm run commit` to commit your changes after staging them. This libr
 ### Using typescript and react transition group
 Its mandatory to code in typescript and use react transition group. In some cases, you may not want react-transition-group, but the main goal is to acheive clean solution. Try not to use any external animation library unless it is something kickass!
 
+### Some important note on React Transition Group's usage in this repo:
+* We can think of React Transition Group as a low level API provider for doing animations.
+* Many people create animation libraries for react on top of some existing javascript animation library by using react transition group. But focus of this library is not that, we want developers to easily reason about animation components based on simple js and css knowledge rather than making a React wrapper of some existing javascript animation library.
+* We should try to create animations on pure css and javascript. But no one is stopping to use an external library unless it's simple to reason about and easy to implement for a normal react developer.
+
 ### Local build and testing
 `npm link` or `yarn link` won't work well. So, this project has [yalc][df2]. Its very easy to use. Just do `npm run build` and then do `yalc publish`. In the consumer project do `yalc add react-transition-group`. This will link your local bundled changes in consumer pretty well.
 
