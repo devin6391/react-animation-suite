@@ -1,4 +1,4 @@
-We're really glad you're reading this, because we need volunteer developers to help this project come to fruition. 👏
+I am really glad you're reading this, because we developers should collaborate to help this project come to fruition. 👏
 
 ## Instructions
 
@@ -7,11 +7,30 @@ These steps will guide you through contributing to this project:
 - Fork the repo
 - Clone it and install dependencies
 
-		git clone https://github.com/YOUR-USERNAME/typescript-library-starter
+		git clone https://github.com/YOUR-USERNAME/react-animation-suite
 		npm install
 
-Keep in mind that after running `npm install` the git repo is reset. So a good way to cope with this is to have a copy of the folder to push the changes, and the other to try them.
+### Keep in mind the problems that we need to solve:
+  - Animation libraries are very opinionated about how animations should be done, how to implement timings, stiffness, etc.
+  - Almost all libraries require a lot of learning before implementing. It's not like you know react and you have animation component from library, then you can simply use it just like that.
+  - Animation libraries tend to do magic underneath, reading them is a difficult task if you want to know their internal working. So it is difficult to contribute in them.
+  - Implementing many animation libraries requires to be implemented from starting. Using a library in the middle or end of development is very tough.
+
+### Commit
+Always run `npm run commit` to commit your changes after staging them. This library is using [commitizen][df1]
+
+### Using typescript and react transition group
+Its mandatory to code in typescript and use react transition group. In some cases, you may not want react-transition-group, but the main goal is to acheive clean solution. Try not to use any external animation library unless it is something kickass!
+
+### Local build and testing
+`npm link` or `yarn link` won't work well. So, this project has [yalc][df2]. Its very easy to use. Just do `npm run build` and then do `yalc publish`. In the consumer project do `yalc add react-transition-group`. This will link your local bundled changes in consumer pretty well.
 
 Make and commit your changes. Make sure the commands npm run build and npm run test:prod are working.
 
-Finally send a [GitHub Pull Request](https://github.com/alexjoverm/typescript-library-starter/compare?expand=1) with a clear list of what you've done (read more [about pull requests](https://help.github.com/articles/about-pull-requests/)). Make sure all of your commits are atomic (one feature per commit).
+You can use [project board][df3] if you like. It will nicely show up issues and work items.
+
+Finally send a [GitHub Pull Request](https://github.com/devin6391/react-animation-suite/compare?expand=1) with a clear list of what you've done (read more [about pull requests](https://help.github.com/articles/about-pull-requests/)). Make sure all of your commits are atomic (one feature per commit).
+
+[df1]: <https://github.com/commitizen>
+[df2]: <https://github.com/whitecolor/yalc>
+[df3]: <https://github.com/devin6391/react-animation-suite/projects/1>
