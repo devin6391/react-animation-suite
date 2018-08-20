@@ -15,13 +15,13 @@ This library is unopinionated about what should be the theory of animation, rath
     import { Slider } from "react-transition-suite/dist/lib/Slider"
     
 #### Using
-Say you component had JSX like this:
+Say you have a component whose JSX is like below:
 
     <div className="container">
         <WannabeSlider {...props} />
     </div>
     
-Now you can slide the WannabeSlider almost like this:
+Now you can slide the WannabeSlider like this:
     
     <div className="container">
         <Slider {...sliderProps}>
@@ -32,11 +32,11 @@ Now you can slide the WannabeSlider almost like this:
 
 ## Problem Statement
   - Animation libraries are very opinionated about how animations should be done, how to implement timings, stiffness, etc.
-  - Almost all libraries require a lot of learning before implementing. It's not like you know react and you have animation component from library, then you can simply use it just like that.
-  - Animation libraries tend to do magic underneath, reading them is a difficult task if you want to know their internal working. So it is difficult to contribute in them.
-  - Implementing many animation libraries requires to be implemented from starting. Using a library in the middle or end of development is very tough.
+  - Almost all libraries require a lot of learning before implementing. It's not like you know react and you have animation component being exported from library, then you can simply use it just like that.
+  - Animation libraries tend to do magic underneath, reading their source code is a difficult task if you want to know their internal working. So it is difficult to contribute in them.
+  - Implementing many animation libraries requires a developer to implement it from starting. Using a library in the middle or end stage of development is very tough.
  
-#### This library is here to solve all these problems. Even if you are contributing, which is what all of us should do, you must think of solving all those above problems.
+#### This library is here to solve all these problems. And if you are contributing, which is what all of us should do, you must think of solving all those above problems.
 
 # Features
   - For now we have only Slider component.
@@ -44,19 +44,15 @@ Now you can slide the WannabeSlider almost like this:
 ### Tech
 
 * [ReactJS] - Obvious!
-* [React Transition Group] - This library internally uses react transition group. And rather than making a React wrapper of current library, we try to create animations on pure css or javascript.
-* [Typescript] - This won't be downloaded as dependency, but just to point out - we are using typescript and we would suggest other developers to use typescript.
-
-And of course Dillinger itself is open source with a [public repository][dill]
- on GitHub.
-
+* [React Transition Group] - This library internally is being used internally. And rather than making a React wrapper of some existing javascript animation library, we try to create animations on pure css or javascript.
+* [Typescript] - This won't be downloaded as dependency, but just to point out - I am using typescript and I would suggest other developers to use typescript.
 
 ### Development
 Want to contribute? Great!
 
 Please read `CONTRIBUTING.md`.
 
-#### Special thanks to [TypeScript library starter](https://github.com/alexjoverm/typescript-library-starter) for easing the process to create a library in typescript.
+#### Special thanks to [TypeScript library starter](https://github.com/alexjoverm/typescript-library-starter) for simplifying the process to create a javascript library with typescript.
 
 
    [ReactJS]: <https://reactjs.org/>
