@@ -8,7 +8,7 @@ import {
 } from "./types";
 import { isNull } from "util";
 
-interface ISliderProps {
+export interface ISliderProps {
   // The property to watch on which sliding will occur. This must be a primitive type.
   watchProp: string | number | boolean | symbol;
   // The properties of child element.
