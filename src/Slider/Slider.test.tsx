@@ -17,14 +17,16 @@ describe("Test slider component", () => {
     direction: ISliderDirection.MoveDown,
     watchProp: 0,
   };
-  beforeEach(() => {
-    jest.spyOn(Slider, "getDerivedStateFromProps");
-  });
-  it("Checks if getDerivedStateFromProps is called whenever Slider is mounted", () => {
-    const SliderWrapper = mount(
-      <Slider {...dummyProps1}>{dummyChildren1}</Slider>,
-    );
-    expect(Slider.getDerivedStateFromProps).toHaveBeenCalled();
-    expect(SliderWrapper.prop("children")).toBe(dummyChildren1);
+  describe('First mounting of Slider component', () => {
+    beforeEach(() => {
+      jest.spyOn(Slider, "getDerivedStateFromProps");
+    });
+    it("Checks if getDerivedStateFromProps is called whenever Slider is mounted", () => {
+      const SliderWrapper = mount(
+        <Slider {...dummyProps1}>{dummyChildren1}</Slider>,
+      );
+      expect(Slider.getDerivedStateFromProps).toHaveBeenCalled();
+      expect(SliderWrapper.prop("children")).toBe(dummyChildren1);
+    });
   });
 });
