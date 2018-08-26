@@ -76,10 +76,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 90,
-        "functions": 95,
-        "lines": 95,
-        "statements": 95
+        "branches": 75,
+        "functions": 85,
+        "lines": 85,
+        "statements": 85
       }
     },
     "collectCoverage": true,
@@ -98,6 +98,7 @@
     "@types/enzyme": "^3.1.13",
     "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/jest": "^23.0.0",
+    "@types/jsdom": "^11.0.6",
     "@types/node": "^10.7.1",
     "@types/react": "^16.4.8",
     "@types/react-dom": "^16.0.7",
@@ -111,6 +112,7 @@
     "enzyme-adapter-react-16": "^1.2.0",
     "husky": "^0.14.0",
     "jest": "^22.0.2",
+    "jsdom": "^12.0.0",
     "lint-staged": "^7.1.3",
     "lodash.camelcase": "^4.3.0",
     "prettier": "^1.13.4",

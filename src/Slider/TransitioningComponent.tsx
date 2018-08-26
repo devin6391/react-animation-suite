@@ -1,25 +1,25 @@
 import * as React from "react";
 import getSliderStyles from "./styles";
 import TransitioningComponentChild, {
-  ITransitioningComponentChildProps
+  ITransitioningComponentChildProps,
 } from "./TransitioningComponentChild";
 import {
   ISliderChildStyles,
   ISliderDirection,
-  TransitionStateTypes
+  TransitionStateTypes,
 } from "./types";
 import { Transition } from "react-transition-group";
 
 interface ITransitioningComponentProps {
-  enter: any; // If true then this will enter in screen.
+  enter: boolean; // If true then this will enter in screen.
   direction: ISliderDirection; // Direction in which transition should take place.
-  appear: any; // Should appear on first.
-  children: any; // The child JSX passed to render
+  appear: boolean; // Should appear on first.
+  children: JSX.Element; // The child JSX passed to render
   parentRef: HTMLDivElement | null; // Reference of Slider component. Useful for getting it's parent width/height.
   childStyles: ISliderChildStyles; // Style for contained transitions.
+  timeout: number; // Timeout under which transition should happen.
   fadeOnSlide?: boolean; // Should it fade with transitions.
   sizePercentageDuringSlide?: number; // % of size which should be in screen. Useful only with fadeOnSlide prop.
-  timeout: number; // Timeout under which transition should happen.
   transitionEndCallback?: () => void; // Callback telling end of transition.
 }
 
@@ -41,13 +41,13 @@ export default class TransitioningComponent extends React.Component<
       sliderExitTimingFunction: this.sliderExitTimingFunction,
       sliderTransitionEnterTime: this.sliderTransitionEnterTime,
       sliderTransitionExitTime: this.sliderTransitionExitTime,
-      wrapperTransformCenter: this.wrapperTransformCenter
+      wrapperTransformCenter: this.wrapperTransformCenter,
     };
 
     const renderState = (state: TransitionStateTypes) => {
       return this.renderTransitioningChild({
         ...partialTransitioningComponentChildProps,
-        state
+        state,
       });
     };
 
@@ -144,7 +144,7 @@ export default class TransitioningComponent extends React.Component<
     const time = exitTransitionTime || transitionTime;
     if (!time) {
       throw new Error(
-        "Either exitTransitionTime or transitionTime should be present as props"
+        "Either exitTransitionTime or transitionTime should be present as props",
       );
     }
     return time + "s";
@@ -156,7 +156,7 @@ export default class TransitioningComponent extends React.Component<
     const time = enterTransitionTime || transitionTime;
     if (!time) {
       throw new Error(
-        "Either enterTransitionTime or transitionTime should be present as props"
+        "Either enterTransitionTime or transitionTime should be present as props",
       );
     }
     return time + "s";
@@ -218,7 +218,7 @@ export default class TransitioningComponent extends React.Component<
 
   // Abstraction of rendering child element. Used inside JSX rendering of child elem.
   private renderTransitioningChild(
-    transitioningComponentChildProps: ITransitioningComponentChildProps
+    transitioningComponentChildProps: ITransitioningComponentChildProps,
   ): JSX.Element {
     return (
       <TransitioningComponentChild {...transitioningComponentChildProps} />
@@ -236,7 +236,7 @@ export default class TransitioningComponent extends React.Component<
           this.props.transitionEndCallback();
         }
       },
-      false
+      false,
     );
   };
 }

@@ -20,6 +20,10 @@ describe("Test slider component", () => {
     watchProp: 0,
   };
 
+  beforeEach(() => {
+    jest.spyOn(console, "error").mockImplementation();
+  });
+
   describe("First mounting of Slider component", () => {
     beforeEach(() => {
       // Arrange
