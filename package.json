@@ -76,10 +76,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 75,
-        "functions": 85,
-        "lines": 85,
-        "statements": 85
+        "branches": 80,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
       }
     },
     "collectCoverage": true,
@@ -92,7 +92,7 @@
   },
   "prettier": {
     "tslintIntegration": true,
-    "trailingComma": "all"
+    "trailingComma": "none"
   },
   "devDependencies": {
     "@types/enzyme": "^3.1.13",
