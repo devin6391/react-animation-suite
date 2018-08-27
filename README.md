@@ -51,6 +51,7 @@ Now you can slide the WannabeSlider like this:
 - Provide more control to consumer.
 - Taking data or providing controls should be done only through props. In case of HOCs, it should be simple json config data.
 - Animation should be generic for any scenario that a developer may face, but it should be specific for a particular animation type, ex. Slider.
+- **Most important of all** - Applying animation should be like decorating a component. Animation components should not affect the logic of developer's component and it should not be thought prior to development of any component. A developer should be allowed to develop his/her component and then apply animation, or remove it. Of course he/she can apply animation in a component while initial development. But whenever a developer wants to apply it or remove it, his/her component should not break and it should function in the same way. [Checkout the codesandbox](https://codesandbox.io/embed/7377yqr9vj). Keep your eyes on two components - _SliderWithAnimation_ and _SliderWithoutAnimation_. Just check the render method of both(rest of the code is just any other react typescript app). Check how _SingleElement_ is written in both, and you will know how easy it is to implement _Slider_ provided from this library.
 
 #### This library is here to solve all these problems. And if you are contributing, which is what all of us should do, you must think of solving all those above problems.
 
@@ -63,6 +64,8 @@ Now you can slide the WannabeSlider like this:
 - [ReactJS] - Obvious!
 - [React Transition Group] - This library is being used internally. This is a transition state management library and is very simple. Please read about how to use this in `CONTRIBUTING.md`.
 - [Typescript] - This won't be downloaded as dependency, but just to point out - I am using typescript and I would suggest other developers to use typescript as it makes life so good!!!
+
+##### Don't get intimidated by typescript if you don't know it. You can use this library in your **plain javascript** project too!
 
 Note -- There is no flow implementation as of now but if someone can contribute for that, it will be great.
 
