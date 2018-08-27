@@ -20,7 +20,7 @@
   "author": "Vineet Dev <vineetdev2008@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git@github.com:devin6391/react-animation-suite.git"
+    "url": "https://github.com/devin6391/react-animation-suite.git"
   },
   "license": "MIT",
   "engines": {
