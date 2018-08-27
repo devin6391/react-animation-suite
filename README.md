@@ -53,6 +53,10 @@ Now you can slide the WannabeSlider like this:
 - Animation should be generic for any scenario that a developer may face, but it should be specific for a particular animation type, ex. Slider.
 - **Most important of all** - Applying animation should be like decorating a component. Animation components should not affect the logic of developer's component and it should not be thought prior to development of any component. A developer should be allowed to develop his/her component and then apply animation, or remove it. Of course he/she can apply animation in a component while initial development. But whenever a developer wants to apply it or remove it, his/her component should not break and it should function in the same way. [Checkout the codesandbox](https://codesandbox.io/embed/7377yqr9vj). Keep your eyes on two components - _SliderWithAnimation_ and _SliderWithoutAnimation_. Just check the render method of both(rest of the code is just any other react typescript app). Check how _SingleElement_ is written in both, and you will know how easy it is to implement _Slider_ provided from this library.
 
+#### Embedded example of Slider
+
+[![Edit 7377yqr9vj](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/7377yqr9vj)
+
 #### This library is here to solve all these problems. And if you are contributing, which is what all of us should do, you must think of solving all those above problems.
 
 # Features
