@@ -85,7 +85,7 @@
     "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}",
-      "!src/ErrorBoundary.tsx"
+      "!src/**/{index,styles,types}.{ts,tsx}"
     ],
     "setupTestFrameworkScriptFile": "<rootDir>/test/setup.ts",
     "testURL": "http://localhost/"

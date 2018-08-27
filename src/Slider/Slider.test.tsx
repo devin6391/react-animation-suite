@@ -10,14 +10,14 @@ describe("Test slider component", () => {
   const dummyProps1 = {
     childProps: {
       bar: 2,
-      foo: 1,
+      foo: 1
     },
     childStyles: {
       height: 100,
-      width: 100,
+      width: 100
     },
     direction: ISliderDirection.MoveDown,
-    watchProp: 0,
+    watchProp: 0
   };
 
   beforeEach(() => {
@@ -33,7 +33,7 @@ describe("Test slider component", () => {
     it("Checks if getDerivedStateFromProps is called and passed ReactElement to be in 'children' prop whenever Slider is mounted", () => {
       // Arrange
       const SliderWrapper = mount(
-        <Slider {...dummyProps1}>{dummyChildren1}</Slider>,
+        <Slider {...dummyProps1}>{dummyChildren1}</Slider>
       );
 
       // Assert
@@ -45,10 +45,10 @@ describe("Test slider component", () => {
   describe("Updating Slider component", () => {
     // Arrange
     const SliderShallowWrapper = shallow(
-      <Slider {...dummyProps1}>{dummyChildren1}</Slider>,
+      <Slider {...dummyProps1}>{dummyChildren1}</Slider>
     );
     const SliderFullWrapper = mount(
-      <Slider {...dummyProps1}>{dummyChildren1}</Slider>,
+      <Slider {...dummyProps1}>{dummyChildren1}</Slider>
     );
     const transitionDuration = 100;
 
@@ -71,15 +71,15 @@ describe("Test slider component", () => {
       const dummyProps2 = {
         childProps: {
           bar: 2,
-          foo: 1,
+          foo: 1
         },
         childStyles: {
           height: 100,
           transitionTime: 1,
-          width: 100,
+          width: 100
         },
         direction: ISliderDirection.MoveDown,
-        watchProp: 1,
+        watchProp: 1
       };
       jest.spyOn(Slider.prototype, "render");
 
@@ -90,22 +90,22 @@ describe("Test slider component", () => {
       expect(Slider.prototype.render).toHaveBeenCalled();
     });
 
-    it("Transition cycle is in Start state initially when transition starts due to updation", () => {
+    it("TransitionCycle is in Start state initially when transition starts due to updation", () => {
       // Arrange
       const transitionDoneCallback = jest.fn();
       const dummyProps2 = {
         childProps: {
           bar: 2,
-          foo: 1,
+          foo: 1
         },
         childStyles: {
           height: 100,
           transitionTime: transitionDuration,
-          width: 100,
+          width: 100
         },
         direction: ISliderDirection.MoveDown,
         transitionDone: transitionDoneCallback,
-        watchProp: 1,
+        watchProp: 1
       };
 
       // Act
@@ -114,7 +114,7 @@ describe("Test slider component", () => {
       // Assert
       // @ts-ignore
       expect(SliderFullWrapper.instance().transitionCycle).toEqual(
-        SliderCycleState.Start,
+        SliderCycleState.Start
       );
     });
 
@@ -124,16 +124,16 @@ describe("Test slider component", () => {
       const dummyProps2 = {
         childProps: {
           bar: 2,
-          foo: 1,
+          foo: 1
         },
         childStyles: {
           height: 100,
           transitionTime: transitionDuration,
-          width: 100,
+          width: 100
         },
         direction: ISliderDirection.MoveDown,
         transitionDone: transitionDoneCallback,
-        watchProp: 1,
+        watchProp: 1
       };
 
       // Act
@@ -143,7 +143,7 @@ describe("Test slider component", () => {
       setTimeout(() => {
         // @ts-ignore
         expect(SliderFullWrapper.instance().transitionCycle).toEqual(
-          SliderCycleState.Full,
+          SliderCycleState.Full
         );
       }, transitionDuration);
     });
@@ -154,16 +154,16 @@ describe("Test slider component", () => {
       const dummyProps2 = {
         childProps: {
           bar: 2,
-          foo: 1,
+          foo: 1
         },
         childStyles: {
           height: 100,
           transitionTime: transitionDuration,
-          width: 100,
+          width: 100
         },
         direction: ISliderDirection.MoveDown,
         transitionDone: transitionDoneCallback,
-        watchProp: 1,
+        watchProp: 1
       };
 
       // Act
@@ -181,15 +181,15 @@ describe("Test slider component", () => {
       const dummyProps2 = {
         childProps: {
           bar: 2,
-          foo: 1,
+          foo: 1
         },
         childStyles: {
           height: 100,
           transitionTime: transitionDuration,
-          width: 100,
+          width: 100
         },
         direction: ISliderDirection.MoveDown,
-        watchProp: 1,
+        watchProp: 1
       };
 
       // Act
@@ -206,15 +206,15 @@ describe("Test slider component", () => {
       const dummyProps2 = {
         childProps: {
           bar: 2,
-          foo: 1,
+          foo: 1
         },
         childStyles: {
           height: 100,
           transitionTime: transitionDuration,
-          width: 100,
+          width: 100
         },
         direction: ISliderDirection.MoveDown,
-        watchProp: 1,
+        watchProp: 1
       };
 
       setTimeout(() => {
@@ -225,71 +225,130 @@ describe("Test slider component", () => {
         expect(SliderFullWrapper.find(TransitioningComponent).length).toBe(2);
       }, transitionDuration);
     });
+  });
 
-    it("Throws error if updated watchProp is undefined", () => {
-      // Arrange
-      const SliderFullWrapper2 = mount(
-        <Slider {...dummyProps1}>{dummyChildren1}</Slider>,
-      );
-      const dummyProps2 = {
-        childProps: {
-          bar: 2,
-          foo: 1,
-        },
-        childStyles: {
-          height: 100,
-          width: 100,
-        },
-        direction: ISliderDirection.MoveDown,
-        watchProp: undefined,
-      };
+  describe("Testing class properties", () => {
+    const dummyProps = {
+      childProps: {
+        bar: 2,
+        foo: 1
+      },
+      childStyles: {
+        height: 100,
+        transitionTime: 100,
+        width: 100
+      },
+      direction: ISliderDirection.MoveDown
+    };
 
-      // Assert
-      expect(() => SliderFullWrapper2.setProps(dummyProps2)).toThrow();
+    describe("Testing beforeUpdationProcess", () => {
+      it("Throws error if updated watchProp is undefined", () => {
+        // Arrange
+        const SliderFullWrapper2 = mount(
+          <Slider {...dummyProps1}>{dummyChildren1}</Slider>
+        );
+        const dummyProps2 = { ...dummyProps, watchProp: undefined };
+
+        // Assert
+        expect(() => SliderFullWrapper2.setProps(dummyProps2)).toThrow();
+      });
+
+      it("Throws error if updated watchProp is null", () => {
+        // Arrange
+        const SliderFullWrapper2 = mount(
+          <Slider {...dummyProps1}>{dummyChildren1}</Slider>
+        );
+        const dummyProps2 = { ...dummyProps, watchProp: null };
+
+        // Assert
+        expect(() => SliderFullWrapper2.setProps(dummyProps2)).toThrow();
+      });
+
+      it("Throws error if updated watchProp is not a primitive type value", () => {
+        // Arrange
+        const SliderFullWrapper2 = mount(
+          <Slider {...dummyProps1}>{dummyChildren1}</Slider>
+        );
+        const dummyProps2 = { ...dummyProps, watchProp: { a: 1 } };
+
+        // Assert
+        expect(() => SliderFullWrapper2.setProps(dummyProps2)).toThrow();
+      });
+
+      it("changing props(to continuosly slide) more than one time before transitionCycle gets complete gives warning", () => {
+        spyOn(console, "warn");
+
+        const SlideWrapper = mount(
+          <Slider {...dummyProps1}>{dummyChildren1}</Slider>
+        );
+
+        const dummyProps2 = { ...dummyProps, watchProp: 1 };
+        SlideWrapper.setProps(dummyProps2);
+
+        const dummyProps3 = { ...dummyProps, watchProp: 2 };
+        SlideWrapper.setProps(dummyProps3);
+
+        expect(console.warn).toBeCalled();
+      });
+
+      it("Set firstRender to false if it was first render", () => {
+        const slideWrapper = shallow(
+          <Slider {...dummyProps1}>{dummyChildren1}</Slider>
+        );
+
+        // @ts-ignore
+        expect(slideWrapper.instance().firstRender).toBeFalsy();
+      });
+
+      it("Set transitionCycle to start if it was not first render and next rerender is after provided transitionTime", () => {
+        const dummyProps2 = { ...dummyProps, watchProp: 0 };
+        const slideWrapper = mount(
+          <Slider {...dummyProps2}>{dummyChildren1}</Slider>
+        );
+
+        setTimeout(() => {
+          const dummyProps3 = { ...dummyProps, watchProp: 2 };
+          slideWrapper.setProps(dummyProps3);
+          // @ts-ignore
+          expect(slideWrapper.instance().transitionCycle).toBe(
+            SliderCycleState.Start
+          );
+        }, dummyProps2.childStyles.transitionTime);
+      });
     });
 
-    it("Throws error if updated watchProp is null", () => {
-      // Arrange
-      const SliderFullWrapper2 = mount(
-        <Slider {...dummyProps1}>{dummyChildren1}</Slider>,
+    describe("Testing getCLonedElems property", () => {
+      const dummyProps2 = { ...dummyProps, watchProp: 1 };
+      const slideWrapper = mount(
+        <Slider {...dummyProps2}>{dummyChildren1}</Slider>
       );
-      const dummyProps2 = {
-        childProps: {
-          bar: 2,
-          foo: 1,
-        },
-        childStyles: {
-          height: 100,
-          width: 100,
-        },
-        direction: ISliderDirection.MoveDown,
-        watchProp: null,
-      };
 
-      // Assert
-      expect(() => SliderFullWrapper2.setProps(dummyProps2)).toThrow();
+      it("returns an array of containing only one element on first render", () => {
+        // @ts-ignore
+        expect(slideWrapper.instance().getCLonedElems().length).toBe(1);
+      });
+
+      it("returns an array of containing only two elements on subsequent re-renders", () => {
+        const dummyProps3 = { ...dummyProps, watchProp: 2 };
+        slideWrapper.setProps(dummyProps3);
+        // @ts-ignore
+        expect(slideWrapper.instance().getCLonedElems().length).toBe(2);
+      });
     });
 
-    it("Throws error if updated watchProp is not a primitive type value", () => {
-      // Arrange
-      const SliderFullWrapper2 = mount(
-        <Slider {...dummyProps1}>{dummyChildren1}</Slider>,
+    describe("Testing enterTransitionDone property", () => {
+      const dummyProps2 = { ...dummyProps, watchProp: 1 };
+      const slideWrapper = shallow(
+        <Slider {...dummyProps2}>{dummyChildren1}</Slider>
       );
-      const dummyProps2 = {
-        childProps: {
-          bar: 2,
-          foo: 1,
-        },
-        childStyles: {
-          height: 100,
-          width: 100,
-        },
-        direction: ISliderDirection.MoveDown,
-        watchProp: { a: 1 },
-      };
-
-      // Assert
-      expect(() => SliderFullWrapper2.setProps(dummyProps2)).toThrow();
+      it("sets transitionCycle to be FULL", () => {
+        // @ts-ignore
+        slideWrapper.instance().enterTransitionDone();
+        // @ts-ignore
+        expect(slideWrapper.instance().transitionCycle).toBe(
+          SliderCycleState.Full
+        );
+      });
     });
   });
 });

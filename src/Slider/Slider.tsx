@@ -4,7 +4,7 @@ import TransitioningComponent from "./TransitioningComponent";
 import {
   ISliderChildStyles,
   ISliderDirection,
-  SliderCycleState,
+  SliderCycleState
 } from "./types";
 import { isNull } from "util";
 
@@ -53,13 +53,13 @@ export default class Slider extends React.PureComponent<
 > {
   public static getDerivedStateFromProps(
     nextProps: ISliderProps,
-    prevState: ISliderState,
+    prevState: ISliderState
   ) {
     return {
       nextChildProps: nextProps.childProps,
       nextWatchProp: nextProps.watchProp,
       prevChildProps: prevState.nextChildProps,
-      prevWatchProp: prevState.nextWatchProp,
+      prevWatchProp: prevState.nextWatchProp
     };
   }
 
@@ -74,7 +74,7 @@ export default class Slider extends React.PureComponent<
       nextChildProps: null,
       nextWatchProp: null,
       prevChildProps: null,
-      prevWatchProp: null,
+      prevWatchProp: null
     };
   }
 
@@ -100,7 +100,7 @@ export default class Slider extends React.PureComponent<
     }
     if (typeof children === "string") {
       throw new Error(
-        "Wrapped child cannot be string, it should be a single react element",
+        "Wrapped child cannot be string, it should be a single react element"
       );
     }
     if (typeof watchProp === "undefined" || isNull(watchProp)) {
@@ -108,13 +108,13 @@ export default class Slider extends React.PureComponent<
     }
     if (watchProp === Object(watchProp)) {
       throw new Error(
-        "**watchProp** must be a primitive value like string, number, boolean or symbol",
+        "**watchProp** must be a primitive value like string, number, boolean or symbol"
       );
     }
     if (this.transitionCycle !== SliderCycleState.Full) {
       console.warn(
         `Slider\(React-Animation-Suite\): You should not change properties unless transition cycle is fully complete.
-        Please manage this in your code by using **transitionDone** callback prop`,
+        Please manage this in your code by using **transitionDone** callback prop`
       );
     }
     if (!this.firstRender) {
@@ -140,7 +140,7 @@ export default class Slider extends React.PureComponent<
       prevWatchProp,
       prevChildProps,
       nextWatchProp,
-      nextChildProps,
+      nextChildProps
     } = this.state;
     const {
       direction,
@@ -148,7 +148,7 @@ export default class Slider extends React.PureComponent<
       slideOnAppear,
       fadeOnSlide,
       sizePercentageDuringSlide,
-      children,
+      children
     } = this.props;
     const clonedElems = [];
     if (nextWatchProp && nextChildProps) {
@@ -166,7 +166,7 @@ export default class Slider extends React.PureComponent<
           transitionEndCallback={this.enterTransitionDone}
         >
           {React.cloneElement(children, nextChildProps)}
-        </TransitioningComponent>,
+        </TransitioningComponent>
       );
     }
     if (prevWatchProp && prevWatchProp !== nextWatchProp && prevChildProps) {
@@ -183,7 +183,7 @@ export default class Slider extends React.PureComponent<
           timeout={1}
         >
           {React.cloneElement(children, prevChildProps)}
-        </TransitioningComponent>,
+        </TransitioningComponent>
       );
     }
     return clonedElems;
