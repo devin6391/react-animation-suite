@@ -43,7 +43,9 @@
     "travis-deploy-once": "travis-deploy-once",
     "prepush": "npm run test:prod && npm run build",
     "commitmsg": "validate-commit-msg",
-    "unsafe-git-push": "git push origin master --no-verify"
+    "unsafe-git-push": "git push origin master --no-verify",
+    "docs": "rimraf docs && mkdir docs && npm run typedoc -- --options typedoc.json ./src/",
+    "typedoc": "typedoc"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
