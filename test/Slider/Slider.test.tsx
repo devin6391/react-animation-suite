@@ -1,7 +1,7 @@
 import * as React from "react";
-import Slider from "./Slider";
-import TransitioningComponent from "./TransitioningComponent";
-import { ISliderDirection, SliderCycleState } from "./types";
+import Slider from "../../src/Slider/Slider";
+import TransitioningComponent from "../../src/Slider/TransitioningComponent";
+import { ISliderDirection, SliderCycleState } from "../../src/Slider/types";
 import { shallow, mount } from "enzyme";
 
 describe("Test slider component", () => {

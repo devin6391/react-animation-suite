@@ -1,8 +1,8 @@
 import * as React from "react";
-import TransitioningComponentChild from "./TransitioningComponentChild";
-import { TransitionStateTypes } from "./types";
+import TransitioningComponentChild from "../../src/Slider/TransitioningComponentChild";
+import { TransitionStateTypes } from "../../src/Slider/types";
 import { shallow } from "enzyme";
-import * as Utils from "./utils";
+import * as Utils from "../../src/Slider/utils";
 
 describe("Test TransitioningComponentChild", () => {
   const dummyCssWrapperStyle = { display: "block" };

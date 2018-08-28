@@ -1,7 +1,7 @@
 import * as React from "react";
-import TransitioningComponent from "./TransitioningComponent";
-import TransitioningComponentChild from "./TransitioningComponentChild";
-import { ISliderDirection } from "./types";
+import TransitioningComponent from "../../src/Slider/TransitioningComponent";
+import TransitioningComponentChild from "../../src/Slider/TransitioningComponentChild";
+import { ISliderDirection } from "../../src/Slider/types";
 import { shallow, mount } from "enzyme";
 import { JSDOM } from "jsdom";
 
