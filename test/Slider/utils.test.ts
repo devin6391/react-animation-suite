@@ -1,4 +1,4 @@
-import * as Utils from "./utils";
+import * as Utils from "../../src/Slider/utils";
 
 describe("Test for utilities of slider package", () => {
   describe("Test getWrapperStyles fn", () => {

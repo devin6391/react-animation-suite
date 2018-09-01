@@ -11,13 +11,5 @@
   "stripInternal": "true",
   "suppressExcessPropertyErrors": "true",
   "suppressImplicitAnyIndexErrors": "true",
-  "module": "es2015",
-  "exclude": [
-    "**/*.test.ts",
-    "**/*.test.tsx",
-    "**/index.ts",
-    "**/index.tsx",
-    "**/styles.ts",
-    "**/types.ts"
-  ]
+  "module": "es2015"
 }
