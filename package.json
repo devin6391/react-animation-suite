@@ -45,7 +45,8 @@
     "commitmsg": "validate-commit-msg",
     "unsafe-git-push": "git push origin master --no-verify",
     "docs": "rimraf docs && mkdir docs && npm run typedoc -- --options typedoc.json ./src/",
-    "typedoc": "typedoc"
+    "typedoc": "typedoc",
+    "storybook": "start-storybook -p 6006 -c .storybook"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
@@ -97,6 +98,11 @@
     "trailingComma": "none"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@storybook/addon-actions": "^3.4.10",
+    "@storybook/addon-info": "^3.4.10",
+    "@storybook/addon-knobs": "^3.4.10",
+    "@storybook/react": "^v4.0.0-alpha.16",
     "@types/enzyme": "^3.1.13",
     "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/jest": "^23.0.0",
@@ -105,6 +111,9 @@
     "@types/react": "^16.4.8",
     "@types/react-dom": "^16.0.7",
     "@types/react-transition-group": "^2.0.13",
+    "awesome-typescript-loader": "^5.2.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.1",
     "colors": "^1.1.2",
     "commitizen": "^2.9.6",
     "coveralls": "^3.0.0",
@@ -119,6 +128,7 @@
     "lodash.camelcase": "^4.3.0",
     "prettier": "^1.13.4",
     "prompt": "^1.0.0",
+    "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "react-dom": "^16.4.2",
     "replace-in-file": "^3.0.0-beta.2",
     "rimraf": "^2.6.1",
@@ -130,6 +140,7 @@
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-typescript2": "^0.16.1",
     "semantic-release": "^15.9.8",
+    "storybook-addon-jsx": "^5.4.0",
     "travis-deploy-once": "^5.0.2",
     "ts-jest": "^23.0.0",
     "ts-node": "^6.0.0",
