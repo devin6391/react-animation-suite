@@ -45,21 +45,6 @@ export default class TransitioningComponent extends React.Component<
       wrapperTransformCenter: this.wrapperTransformCenter
     };
 
-    // tslint:disable-next-line:no-console
-    console.log(`
-      This is ${enter ? "entering component" : "exiting component"},
-      entering transform is: ${
-        partialTransitioningComponentChildProps.enteringTransform
-      }
-    `);
-    // tslint:disable-next-line:no-console
-    console.log(`
-    This is ${enter ? "entering component" : "exiting component"},
-      exiting transform is: ${
-        partialTransitioningComponentChildProps.exitingTransform
-      }
-    `);
-
     const renderState = (state: TransitionStateTypes) => {
       return this.renderTransitioningChild({
         ...partialTransitioningComponentChildProps,

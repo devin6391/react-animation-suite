@@ -2,15 +2,10 @@ import React from "react";
 
 import { storiesOf } from "@storybook/react";
 import Slider from "../src/Slider/Slider";
-// import { wInfo } from "../storybook-utils";
 import { object, number } from "@storybook/addon-knobs/react";
 import DummySliderChild from "./DummySliderChild";
 import { ISliderDirection } from "../src/Slider/types";
-
-const label3 = "Sing";
-const defaultValue3 = 1;
-// const groupId3 = "GROUP-ID3";
-const watchPropKnob = number(label3, defaultValue3);
+import { wInfo } from "../storybook-utils";
 
 const label4 = "ChildProps";
 const childProps = {
@@ -35,15 +30,47 @@ const childStyles = {
 const groupId5 = "GROUP-ID5";
 const childStylesKnob = object(childStylesLabel, childStyles, groupId5);
 
-storiesOf("Slider", module).add("basic Slider", () => (
-  <div style={{ width: "200px", height: "200px" }}>
-    <Slider
-      watchProp={watchPropKnob}
-      childProps={childPropsKnob}
-      direction={directionKnob}
-      childStyles={childStylesKnob}
-    >
-      <DummySliderChild {...childProps} />
-    </Slider>
-  </div>
-));
+const stories = storiesOf("Slider", module);
+
+stories.addWithJSX(
+  "Slider",
+
+  wInfo(`
+    ### Basic Slider
+    A very basic example of slider. Just change the watchprop and see the functionality.
+    Just change the "Watch Prop" Knob to see.
+    This example just shows that your component will slide if watchProp is changed.
+
+    ### Usage
+    ~~~js
+      <Slider
+        watchProp={watchPropKnob}
+        childProps={childPropsKnob}
+        direction={directionKnob}
+        childStyles={childStylesKnob}
+      >
+        <TargetComponentToSlide {...childProps} /> // Your own component that is tageted for sliding
+      </Slider>
+    ~~~
+
+    ### To use this Storybook
+
+    Explore the panels on the left.
+  `)(() => {
+    const label3 = "Watch Prop";
+    const defaultValue3 = 1;
+    const watchPropKnob = number(label3, defaultValue3);
+    return (
+      <div style={{ height: "100px", width: "200px" }}>
+        <Slider
+          watchProp={watchPropKnob}
+          childProps={childPropsKnob}
+          direction={directionKnob}
+          childStyles={childStylesKnob}
+        >
+          <DummySliderChild {...childProps} />
+        </Slider>
+      </div>
+    );
+  })
+);
