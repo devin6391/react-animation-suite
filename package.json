@@ -46,7 +46,8 @@
     "unsafe-git-push": "git push origin master --no-verify",
     "docs": "rimraf docs && mkdir docs && npm run typedoc -- --options typedoc.json ./src/",
     "typedoc": "typedoc",
-    "storybook": "start-storybook -p 6006 -c .storybook"
+    "storybook": "start-storybook -p 6006 -c .storybook",
+    "yalc:publish": "npm run build && yalc publish"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
