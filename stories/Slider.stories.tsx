@@ -7,29 +7,6 @@ import DummySliderChild from "./DummySliderChild";
 import { ISliderDirection } from "../src/Slider/types";
 import { wInfo } from "../storybook-utils";
 
-const label4 = "ChildProps";
-const childProps = {
-  age: 27,
-  doesSing: false,
-  firstName: "Vineet",
-  lastName: "Dev"
-};
-const groupId4 = "GROUP-ID4";
-const childPropsKnob = object(label4, childProps, groupId4);
-
-const directionLabel = "Direction";
-const directionDefault = ISliderDirection.MoveLeft;
-const directionKnob = number(directionLabel, directionDefault);
-
-const childStylesLabel = "ChildStyles";
-const childStyles = {
-  height: 100,
-  transitionTime: 0.3,
-  width: 100
-};
-const groupId5 = "GROUP-ID5";
-const childStylesKnob = object(childStylesLabel, childStyles, groupId5);
-
 const stories = storiesOf("Slider", module);
 
 stories.addWithJSX(
@@ -60,8 +37,32 @@ stories.addWithJSX(
     const label3 = "Watch Prop";
     const defaultValue3 = 1;
     const watchPropKnob = number(label3, defaultValue3);
+
+    const label4 = "ChildProps";
+    const childProps = {
+      age: 27,
+      doesSing: false,
+      firstName: "Vineet",
+      lastName: "Dev"
+    };
+    const groupId4 = "GROUP-ID4";
+    const childPropsKnob = object(label4, childProps, groupId4);
+
+    const childStylesLabel = "ChildStyles";
+    const childStyles = {
+      height: 100,
+      transitionTime: 0.3,
+      width: 100
+    };
+    const groupId5 = "GROUP-ID5";
+    const childStylesKnob = object(childStylesLabel, childStyles, groupId5);
+
+    const directionLabel = "Direction";
+    const directionDefault = ISliderDirection.MoveLeft;
+    const directionKnob = number(directionLabel, directionDefault);
+
     return (
-      <div style={{ height: "100px", width: "200px" }}>
+      <div style={{ height: "200px", width: "200px" }}>
         <Slider
           watchProp={watchPropKnob}
           childProps={childPropsKnob}
