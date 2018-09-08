@@ -108,7 +108,7 @@ export default class Slider extends React.PureComponent<
     }
     if (watchProp === Object(watchProp)) {
       throw new Error(
-        "**watchProp** must be a primitive value like string, number, boolean or symbol"
+        "**watchProp** must be either string or a number; and that also a truthy value"
       );
     }
     if (this.transitionCycle !== SliderCycleState.Full) {
@@ -156,7 +156,7 @@ export default class Slider extends React.PureComponent<
         <TransitioningComponent
           enter={true}
           direction={direction}
-          key={nextWatchProp}
+          key={"" + nextWatchProp}
           appear={slideOnAppear || !!prevWatchProp}
           parentRef={this.selfRef}
           childStyles={childStyles}
@@ -174,7 +174,7 @@ export default class Slider extends React.PureComponent<
         <TransitioningComponent
           enter={false}
           direction={direction}
-          key={prevWatchProp}
+          key={"" + prevWatchProp}
           appear={true}
           parentRef={this.selfRef}
           childStyles={childStyles}

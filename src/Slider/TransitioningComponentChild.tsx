@@ -16,7 +16,7 @@ export interface ITransitioningComponentChildProps {
   child: JSX.Element;
 }
 
-export default function TransitioningComponentChild(
+export function TransitioningComponentChild(
   props: ITransitioningComponentChildProps
 ) {
   let wrapperStyles: IWrapperStyles;
