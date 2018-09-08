@@ -151,6 +151,11 @@ export default class Slider extends React.PureComponent<
       children
     } = this.props;
     const clonedElems = [];
+    const enterTimeout =
+      (childStyles.transitionTime || childStyles.enterTransitionTime || 1) *
+      100;
+    const exitTimeout =
+      (childStyles.transitionTime || childStyles.exitTransitionTime || 1) * 100;
     if (nextWatchProp && nextChildProps) {
       clonedElems.push(
         <TransitioningComponent
@@ -162,7 +167,7 @@ export default class Slider extends React.PureComponent<
           childStyles={childStyles}
           fadeOnSlide={fadeOnSlide}
           sizePercentageDuringSlide={sizePercentageDuringSlide}
-          timeout={1}
+          timeout={enterTimeout}
           transitionEndCallback={this.enterTransitionDone}
         >
           {React.cloneElement(children, nextChildProps)}
@@ -180,7 +185,7 @@ export default class Slider extends React.PureComponent<
           childStyles={childStyles}
           fadeOnSlide={fadeOnSlide}
           sizePercentageDuringSlide={sizePercentageDuringSlide}
-          timeout={1}
+          timeout={exitTimeout}
         >
           {React.cloneElement(children, prevChildProps)}
         </TransitioningComponent>
