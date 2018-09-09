@@ -19,4 +19,19 @@ describe("Test for utilities of slider package", () => {
       ).toEqual(args);
     });
   });
+
+  describe("Test noNullOrUndefined fn", () => {
+    it("Return true if any value is not undefined or null", () => {
+      const foo = false;
+      expect(Utils.noNullOrUndefined(foo)).toBeTruthy();
+    });
+    it("Return false if any value is null", () => {
+      const foo = null;
+      expect(Utils.noNullOrUndefined(foo)).toBeFalsy();
+    });
+    it("Return false if any value is undefined", () => {
+      const foo = undefined;
+      expect(Utils.noNullOrUndefined(foo)).toBeFalsy();
+    });
+  });
 });
