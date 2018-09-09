@@ -1,4 +1,5 @@
-import { IWrapperStyles } from './types'
+import { IWrapperStyles } from "./types";
+import { isNull } from "util";
 
 /**
  * Function to get the wrapper style for transitioning child
@@ -14,5 +15,13 @@ export function getWrapperStyles(
   opacity: number,
   transitionTimingFunction?: string
 ): IWrapperStyles {
-  return { transform, transition, opacity, transitionTimingFunction }
+  return { transform, transition, opacity, transitionTimingFunction };
+}
+
+/**
+ * This function checks if a variable is not undef or not null
+ * @param subjectArg
+ */
+export function noNullOrUndefined(subjectArg: any): boolean {
+  return typeof subjectArg !== "undefined" && !isNull(subjectArg);
 }

@@ -7,10 +7,11 @@ import {
   SliderCycleState
 } from "./types";
 import { isNull } from "util";
+import { noNullOrUndefined } from "./utils";
 
 export interface ISliderProps {
   // The property to watch on which sliding will occur. This must be a primitive type.
-  watchProp: string | number | boolean | symbol;
+  watchProp: string | number | boolean;
   // The properties of child element.
   childProps: any;
   // The direction in which this change's sliding effect should go.
@@ -67,6 +68,8 @@ export default class Slider extends React.PureComponent<
 
   private selfRef: HTMLDivElement | null = null;
   private firstRender: boolean = true;
+  private curWatchCount: number = 0;
+  private prevWatchCount: number = 0;
 
   constructor(props: ISliderProps) {
     super(props);
@@ -107,9 +110,7 @@ export default class Slider extends React.PureComponent<
       throw new Error("**watchProp** cannot be null or undefined");
     }
     if (watchProp === Object(watchProp)) {
-      throw new Error(
-        "**watchProp** must be either string or a number; and that also a truthy value"
-      );
+      throw new Error("**watchProp** must be either string, number or boolean");
     }
     if (this.transitionCycle !== SliderCycleState.Full) {
       console.warn(
@@ -121,6 +122,10 @@ export default class Slider extends React.PureComponent<
       this.transitionCycle = SliderCycleState.Start;
     } else {
       this.firstRender = false;
+    }
+    if (this.state.nextWatchProp !== this.state.prevWatchProp) {
+      this.prevWatchCount = this.curWatchCount;
+      this.curWatchCount += 1;
     }
   }
 
@@ -156,13 +161,13 @@ export default class Slider extends React.PureComponent<
       100;
     const exitTimeout =
       (childStyles.transitionTime || childStyles.exitTransitionTime || 1) * 100;
-    if (nextWatchProp && nextChildProps) {
+    if (noNullOrUndefined(nextWatchProp) && nextChildProps) {
       clonedElems.push(
         <TransitioningComponent
           enter={true}
           direction={direction}
-          key={"" + nextWatchProp}
-          appear={slideOnAppear || !!prevWatchProp}
+          key={"s_" + this.curWatchCount + nextWatchProp}
+          appear={slideOnAppear || noNullOrUndefined(prevWatchProp)}
           parentRef={this.selfRef}
           childStyles={childStyles}
           fadeOnSlide={fadeOnSlide}
@@ -174,12 +179,16 @@ export default class Slider extends React.PureComponent<
         </TransitioningComponent>
       );
     }
-    if (prevWatchProp && prevWatchProp !== nextWatchProp && prevChildProps) {
+    if (
+      noNullOrUndefined(prevWatchProp) &&
+      prevWatchProp !== nextWatchProp &&
+      prevChildProps
+    ) {
       clonedElems.push(
         <TransitioningComponent
           enter={false}
           direction={direction}
-          key={"" + prevWatchProp}
+          key={"s_" + this.prevWatchCount + prevWatchProp}
           appear={true}
           parentRef={this.selfRef}
           childStyles={childStyles}
