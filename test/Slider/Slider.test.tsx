@@ -14,6 +14,7 @@ describe("Test slider component", () => {
     },
     childStyles: {
       height: 100,
+      transitionTime: 200,
       width: 100
     },
     direction: ISliderDirection.MoveDown,
@@ -84,7 +85,7 @@ describe("Test slider component", () => {
       jest.spyOn(Slider.prototype, "render");
 
       // Act
-      SliderFullWrapper.setProps(dummyProps2);
+      SliderShallowWrapper.setProps(dummyProps2);
 
       // Assert
       expect(Slider.prototype.render).toHaveBeenCalled();
@@ -244,9 +245,10 @@ describe("Test slider component", () => {
     describe("Testing beforeUpdationProcess", () => {
       it("Throws error if updated watchProp is undefined", () => {
         // Arrange
-        const SliderFullWrapper2 = mount(
+        const SliderFullWrapper2 = shallow(
           <Slider {...dummyProps1}>{dummyChildren1}</Slider>
         );
+
         const dummyProps2 = { ...dummyProps, watchProp: undefined };
 
         // Assert
@@ -255,7 +257,7 @@ describe("Test slider component", () => {
 
       it("Throws error if updated watchProp is null", () => {
         // Arrange
-        const SliderFullWrapper2 = mount(
+        const SliderFullWrapper2 = shallow(
           <Slider {...dummyProps1}>{dummyChildren1}</Slider>
         );
         const dummyProps2 = { ...dummyProps, watchProp: null };
@@ -266,7 +268,7 @@ describe("Test slider component", () => {
 
       it("Throws error if updated watchProp is not a primitive type value", () => {
         // Arrange
-        const SliderFullWrapper2 = mount(
+        const SliderFullWrapper2 = shallow(
           <Slider {...dummyProps1}>{dummyChildren1}</Slider>
         );
         const dummyProps2 = { ...dummyProps, watchProp: { a: 1 } };
@@ -278,7 +280,7 @@ describe("Test slider component", () => {
       it("changing props(to continuosly slide) more than one time before transitionCycle gets complete gives warning", () => {
         spyOn(console, "warn");
 
-        const SlideWrapper = mount(
+        const SlideWrapper = shallow(
           <Slider {...dummyProps1}>{dummyChildren1}</Slider>
         );
 
@@ -302,7 +304,7 @@ describe("Test slider component", () => {
 
       it("Set transitionCycle to start if it was not first render and next rerender is after provided transitionTime", () => {
         const dummyProps2 = { ...dummyProps, watchProp: 0 };
-        const slideWrapper = mount(
+        const slideWrapper = shallow(
           <Slider {...dummyProps2}>{dummyChildren1}</Slider>
         );
 
