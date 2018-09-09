@@ -18,6 +18,8 @@ stories.addWithJSX(
     Just change the "Watch Prop" Knob to see.
     This example just shows that your component will slide if watchProp is changed.
 
+    Watch prop can changed for seeing the effect.
+
     ### Usage
     ~~~js
       <Slider
