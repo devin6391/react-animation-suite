@@ -26,6 +26,9 @@ export interface ISliderProps {
   fadeOnSlide?: boolean;
   // Percentage of size which should be there even if exit/enter is done. Useful only with fadeOnSlide prop.
   sizePercentageDuringSlide?: number;
+  // Css class that a developer wants on Slider component - these properties will be overrridden
+  // margin, position, display and overflow. !important may override them but be cautious!!!
+  className?: string;
   // TransitionDone callback
   transitionDone?: () => void;
 }
@@ -87,7 +90,11 @@ export default class Slider extends React.PureComponent<
     const rtgListStyles = getSliderStyles().rtgList;
     const styles = { ...rtgListStyles, width, height };
     return (
-      <div ref={elem => (this.selfRef = elem)} style={styles}>
+      <div
+        ref={elem => (this.selfRef = elem)}
+        style={styles}
+        className={this.props.className}
+      >
         {this.getCLonedElems()}
       </div>
     );

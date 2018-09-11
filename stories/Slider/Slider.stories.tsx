@@ -1,41 +1,21 @@
 import React from "react";
 
 import { storiesOf } from "@storybook/react";
-import Slider from "../src/Slider/Slider";
+import Slider from "../../src/Slider/Slider";
 import { object, number } from "@storybook/addon-knobs/react";
 import DummySliderChild from "./DummySliderChild";
-import { ISliderDirection } from "../src/Slider/types";
-import { wInfo } from "../storybook-utils";
+import { ISliderDirection } from "../../src/Slider/types";
+import { wInfo } from "../../storybook-utils";
+// @ts-ignore
+import BasicText from "./basic.md";
+import "./slider.css";
 
 const stories = storiesOf("Slider", module);
 
 stories.addWithJSX(
   "Slider",
 
-  wInfo(`
-    ### Basic Slider
-    A very basic example of slider. Just change the watchprop and see the functionality.
-    Just change the "Watch Prop" Knob to see.
-    This example just shows that your component will slide if watchProp is changed.
-
-    Watch prop can changed for seeing the effect.
-
-    ### Usage
-    ~~~js
-      <Slider
-        watchProp={watchPropKnob}
-        childProps={childPropsKnob}
-        direction={directionKnob}
-        childStyles={childStylesKnob}
-      >
-        <TargetComponentToSlide {...childProps} /> // Your own component that is tageted for sliding
-      </Slider>
-    ~~~
-
-    ### To use this Storybook
-
-    Explore the panels on the left.
-  `)(() => {
+  wInfo(BasicText)(() => {
     const label3 = "Watch Prop";
     const defaultValue3 = 1;
     const watchPropKnob = number(label3, defaultValue3);
@@ -70,6 +50,7 @@ stories.addWithJSX(
           childProps={childPropsKnob}
           direction={directionKnob}
           childStyles={childStylesKnob}
+          className={"sliderwrapper1"}
         >
           <DummySliderChild {...childProps} />
         </Slider>
