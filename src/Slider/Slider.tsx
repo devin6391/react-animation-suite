@@ -87,15 +87,16 @@ export default class Slider extends React.PureComponent<
       width,
       height,
       marginHorizontal,
-      marginVertical
+      marginVertical,
+      measureUnit
     } = this.props.childStyles;
     const rtgListStyles = getSliderStyles().rtgList;
     const sliderWidth = width + (marginHorizontal ? 2 * marginHorizontal : 0);
     const sliderHeight = height + (marginVertical ? 2 * marginVertical : 0);
     const styles = {
       ...rtgListStyles,
-      height: sliderHeight + "px",
-      width: sliderWidth + "px"
+      height: sliderHeight + (measureUnit || "px"),
+      width: sliderWidth + (measureUnit || "px")
     };
     return (
       <div ref={elem => (this.selfRef = elem)} style={styles}>

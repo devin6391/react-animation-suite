@@ -64,6 +64,11 @@ export default class TransitioningComponent extends React.Component<
     );
   }
 
+  // Get css measurement unit
+  private get cssMeasureUnit(): string {
+    return this.props.childStyles.measureUnit || "px";
+  }
+
   // Getter method for calculating horizontal margin
   // Useful when sliding direction is right/left.
   private get sliderHorizontalMargin(): number {
@@ -113,25 +118,33 @@ export default class TransitioningComponent extends React.Component<
   // Getter method for transform style if component is at right and is invisible.
   // Useful when sliding direction is right/left.
   private get wrapperStyleFarRight(): string {
-    return `translate3d(${this.horizontalFarDistance}px, 0, 0)`;
+    return `translate3d(${this.horizontalFarDistance}${
+      this.cssMeasureUnit
+    }, 0, 0)`;
   }
 
   // Getter method for transform style if component is at left and is invisible.
   // Useful when sliding direction is right/left.
   private get wrapperStyleFarLeft(): string {
-    return `translate3d(-${this.horizontalFarDistance}px, 0, 0)`;
+    return `translate3d(-${this.horizontalFarDistance}${
+      this.cssMeasureUnit
+    }, 0, 0)`;
   }
 
   // Getter method for transform style if component is at up and is invisible.
   // Useful when sliding direction is up/down.
   private get wrapperStyleFarUp(): string {
-    return `translate3d(0, -${this.verticalFarDistance}px, 0)`;
+    return `translate3d(0, -${this.verticalFarDistance}${
+      this.cssMeasureUnit
+    }, 0)`;
   }
 
   // Getter method for transform style if component is at down and is invisible.
   // Useful when sliding direction is up/down.
   private get wrapperStyleFarDown(): string {
-    return `translate3d(0, ${this.verticalFarDistance}px, 0)`;
+    return `translate3d(0, ${this.verticalFarDistance}${
+      this.cssMeasureUnit
+    }, 0)`;
   }
 
   // Getter method for transform style if component is at center.
@@ -139,7 +152,9 @@ export default class TransitioningComponent extends React.Component<
     const { marginVertical, marginHorizontal } = this.props.childStyles;
     const vDistance = marginVertical || 0;
     const hDistance = marginHorizontal || 0;
-    return `translate3d(${hDistance}px, ${vDistance}px, 0)`;
+    return `translate3d(${hDistance}${this.cssMeasureUnit}, ${vDistance}${
+      this.cssMeasureUnit
+    }, 0)`;
   }
 
   // Getter method to calculate transition exit time.

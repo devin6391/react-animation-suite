@@ -1,3 +1,18 @@
+export type cssUnitTypes =
+  | "px"
+  | "mm"
+  | "cm"
+  | "in"
+  | "pt"
+  | "pc"
+  | "em"
+  | "ex"
+  | "ch"
+  | "rem"
+  | "vw"
+  | "vh"
+  | "%";
+
 export interface ISliderChildStyles {
   // Width of child element of Slider component.
   width: number;
@@ -19,6 +34,8 @@ export interface ISliderChildStyles {
   marginHorizontal?: number;
   // margin vertical
   marginVertical?: number;
+  // css unit type
+  measureUnit?: cssUnitTypes;
 }
 
 export const enum ISliderDirection {
