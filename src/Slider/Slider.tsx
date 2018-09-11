@@ -83,9 +83,20 @@ export default class Slider extends React.PureComponent<
 
   public render() {
     this.beforeUpdationProcess();
-    const { width, height } = this.props.childStyles;
+    const {
+      width,
+      height,
+      marginHorizontal,
+      marginVertical
+    } = this.props.childStyles;
     const rtgListStyles = getSliderStyles().rtgList;
-    const styles = { ...rtgListStyles, width, height };
+    const sliderWidth = width + (marginHorizontal ? 2 * marginHorizontal : 0);
+    const sliderHeight = height + (marginVertical ? 2 * marginVertical : 0);
+    const styles = {
+      ...rtgListStyles,
+      height: sliderHeight + "px",
+      width: sliderWidth + "px"
+    };
     return (
       <div ref={elem => (this.selfRef = elem)} style={styles}>
         {this.getCLonedElems()}

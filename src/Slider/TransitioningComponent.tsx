@@ -136,7 +136,10 @@ export default class TransitioningComponent extends React.Component<
 
   // Getter method for transform style if component is at center.
   private get wrapperTransformCenter(): string {
-    return "translate3d(0, 0, 0)";
+    const { marginVertical, marginHorizontal } = this.props.childStyles;
+    const vDistance = marginVertical || 0;
+    const hDistance = marginHorizontal || 0;
+    return `translate3d(${hDistance}px, ${vDistance}px, 0)`;
   }
 
   // Getter method to calculate transition exit time.
