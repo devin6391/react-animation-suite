@@ -7,6 +7,10 @@ interface IDummySliderChildProps {
   age: number;
 }
 
+/**
+ * Dummy slider
+ * @param props 
+ */
 export default function(props: IDummySliderChildProps) {
   return (
     <div style={{ height: "100px", width: "100px", display: "block" }}>
