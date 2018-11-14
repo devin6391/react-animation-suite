@@ -15,13 +15,15 @@ export interface ISliderChildStyles {
   enterTimingFunction?: string;
   // Exit transition timing function. Will override timingFunction prop.
   exitTimingFunction?: string;
+  // zIndex of the child element.
+  zIndex?: number;
 }
 
 export const enum ISliderDirection {
   MoveLeft,
   MoveRight,
   MoveUp,
-  MoveDown,
+  MoveDown
 }
 
 export interface IWrapperStyles {
@@ -40,5 +42,5 @@ export type TransitionStateTypes = "enter" | "entering" | "entered" | "exit" | "
 export const enum SliderCycleState {
   Start = "start",
   Half = "half",
-  Full = "full",
+  Full = "full"
 }
