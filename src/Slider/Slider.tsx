@@ -186,6 +186,7 @@ export default class Slider extends React.PureComponent<
         </TransitioningComponent>
       );
     }
+    const preparedChildProps : ISliderChildStyles = {...childStyles, zIndex:-1};
     if (
       noNullOrUndefined(prevWatchProp) &&
       prevWatchProp !== nextWatchProp &&
@@ -198,7 +199,7 @@ export default class Slider extends React.PureComponent<
           key={"s_" + this.prevWatchCount + prevWatchProp}
           appear={true}
           parentRef={this.selfRef}
-          childStyles={childStyles}
+          childStyles={preparedChildProps}
           fadeOnSlide={fadeOnSlide}
           sizePercentageDuringSlide={sizePercentageDuringSlide}
           timeout={exitTimeout}
