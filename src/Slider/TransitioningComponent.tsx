@@ -214,7 +214,12 @@ export default class TransitioningComponent extends React.Component<
   // Get the wrapper css style, non dependent on state of transition.
   private get cssWrapperStyle(): React.CSSProperties {
     const rtgWrapperStyles = getSliderStyles().rtgWrapper;
-    return { ...rtgWrapperStyles, width: this.props.childStyles.width };
+    const zIndex = this.props.childStyles.zIndex;
+    const styles =  { ...rtgWrapperStyles, width: this.props.childStyles.width, height: this.props.childStyles.height };
+    if(zIndex) {
+      styles.zIndex = zIndex;
+    }
+    return styles;
   }
 
   // Abstraction of rendering child element. Used inside JSX rendering of child elem.
