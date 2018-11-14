@@ -51,7 +51,7 @@ interface ISliderState {
  * @prop sizePercentageDuringSlide - % of size which should be on screen. Useful only with fadeOnSlide prop. Optional.
  * @prop transitionDone - Transition done callback. Optional.
  */
-export default class Slider extends React.PureComponent<
+export default class Slider extends React.Component<
   ISliderProps,
   ISliderState
 > {
@@ -84,7 +84,17 @@ export default class Slider extends React.PureComponent<
     };
   }
 
+  public shouldComponentUpdate(nextProps: ISliderProps): boolean {
+    const validTransitionCycleState =
+      this.transitionCycle === SliderCycleState.Full ||
+      this.transitionCycle === SliderCycleState.Start;
+    const isWatchPropDifferent = this.props.watchProp !== nextProps.watchProp;
+    return validTransitionCycleState && isWatchPropDifferent;
+  }
+
   public render() {
+    console.info("<<<Slider: prev props: ", this.state.prevChildProps);
+    console.info("<<<Slider next props: ", this.state.nextChildProps);
     this.beforeUpdationProcess();
     const { width, height } = this.props.childStyles;
     const rtgListStyles = getSliderStyles().rtgList;
@@ -186,7 +196,10 @@ export default class Slider extends React.PureComponent<
         </TransitioningComponent>
       );
     }
-    const preparedChildProps : ISliderChildStyles = {...childStyles, zIndex:-1};
+    const preparedChildProps: ISliderChildStyles = {
+      ...childStyles,
+      zIndex: -1
+    };
     if (
       noNullOrUndefined(prevWatchProp) &&
       prevWatchProp !== nextWatchProp &&
