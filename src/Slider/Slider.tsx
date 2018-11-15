@@ -93,8 +93,6 @@ export default class Slider extends React.Component<
   }
 
   public render() {
-    console.info("<<<Slider: prev props: ", this.state.prevChildProps);
-    console.info("<<<Slider next props: ", this.state.nextChildProps);
     this.beforeUpdationProcess();
     const { width, height } = this.props.childStyles;
     const rtgListStyles = getSliderStyles().rtgList;

@@ -59,13 +59,6 @@ export function TransitioningComponentChild(
     default:
       throw new Error("Transition has no state");
   }
-  console.info(
-    "<<<Slider finally rendering child for " +
-      (props.enter ? " %cEntering component " : " %cExiting component ") +
-      "with style: ",
-    "color:blue, font-size: 20px",
-    wrapperStyles
-  );
   return (
     <div style={{ ...wrapperStyles, ...props.cssWrapperStyle }}>
       {props.child}
