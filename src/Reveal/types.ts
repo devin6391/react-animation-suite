@@ -10,4 +10,5 @@ export interface IRevealChildStyles {
   timingFunction?: string;
   enterTimingFunction?: string;
   exitTimingFunction?: string;
+  minMeasureValue?: number;
 }

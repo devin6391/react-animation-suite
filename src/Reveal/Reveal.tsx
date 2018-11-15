@@ -46,26 +46,26 @@ export default class Reveal extends React.Component<IRevealPropType, any> {
           switch (state) {
             case "entering":
               wrapperStyle = {
-                maxHeight: 0,
+                ...this.cssHeightWidthPropWithValue(false),
                 opacity: withFade ? 0 : 1
               };
               break;
             case "entered":
               wrapperStyle = {
-                maxHeight: "100vh",
+                ...this.cssHeightWidthPropWithValue(true),
                 opacity: 1,
-                transition: `max-height ${this.enterTransitionTime}s ${
-                  this.enterTimingFunction
-                }, opacity ${this.enterTransitionTime}s ${
-                  this.enterTimingFunction
-                }`
+                transition: `${this.cssDirection} ${
+                  this.enterTransitionTime
+                }s ${this.enterTimingFunction}, opacity ${
+                  this.enterTransitionTime
+                }s ${this.enterTimingFunction}`
               };
               break;
             case "exiting":
               wrapperStyle = {
-                maxHeight: 0,
+                ...this.cssHeightWidthPropWithValue(false),
                 opacity: withFade ? 0 : 1,
-                transition: `max-height ${this.exitTransitionTime}s ${
+                transition: `${this.cssDirection} ${this.exitTransitionTime}s ${
                   this.exitTimingFunction
                 }, opacity ${this.exitTransitionTime}s ${
                   this.exitTimingFunction
@@ -74,7 +74,7 @@ export default class Reveal extends React.Component<IRevealPropType, any> {
               break;
             case "exited":
               wrapperStyle = {
-                maxHeight: 0,
+                ...this.cssHeightWidthPropWithValue(false),
                 opacity: withFade ? 0 : 1
               };
               break;
@@ -127,4 +127,44 @@ export default class Reveal extends React.Component<IRevealPropType, any> {
       overflow: "hidden"
     };
   }
+
+  private get cssDirection() {
+    if (this.props.direction === IRevealDirection.MoveDown) {
+      return "max-height";
+    } else if (this.props.direction === IRevealDirection.MoveRight) {
+      return "max-width";
+    } else {
+      throw new Error(
+        "Either direction prop is not present or it's value provided is wrong"
+      );
+    }
+  }
+
+  private cssHeightWidthPropWithValue = (
+    forMax: boolean
+  ): React.CSSProperties => {
+    let styles: React.CSSProperties = {};
+    if (this.props.direction === IRevealDirection.MoveDown) {
+      if (forMax) {
+        styles = { maxHeight: "100vh" };
+      } else {
+        styles = {
+          maxHeight: this.props.childStyles.minMeasureValue || "0px"
+        };
+      }
+    } else if (this.props.direction === IRevealDirection.MoveRight) {
+      if (forMax) {
+        styles = { maxWidth: "100vw" };
+      } else {
+        styles = {
+          maxWidth: this.props.childStyles.minMeasureValue || "0px"
+        };
+      }
+    } else {
+      throw new Error(
+        "Either direction prop is not present or it's value provided is wrong"
+      );
+    }
+    return styles;
+  };
 }
