@@ -165,6 +165,8 @@ export default class Reveal extends React.Component<IRevealPropType, any> {
         "Either direction prop is not present or it's value provided is wrong"
       );
     }
-    return styles;
+    return this.props.childStyles.extraStyles
+      ? { ...this.props.childStyles.extraStyles, ...styles }
+      : styles;
   };
 }

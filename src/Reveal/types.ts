@@ -11,4 +11,5 @@ export interface IRevealChildStyles {
   enterTimingFunction?: string;
   exitTimingFunction?: string;
   minMeasureValue?: number;
+  extraStyles?: React.CSSProperties;
 }
