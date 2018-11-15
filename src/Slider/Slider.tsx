@@ -178,6 +178,10 @@ export default class Slider extends React.Component<
       100;
     const exitTimeout =
       (childStyles.transitionTime || childStyles.exitTransitionTime || 1) * 100;
+    const preparedChildStylesEnter: ISliderChildStyles = {
+      ...childStyles,
+      zIndex: 2
+    };
     if (noNullOrUndefined(nextWatchProp) && nextChildProps) {
       clonedElems.push(
         <TransitioningComponent
@@ -186,7 +190,7 @@ export default class Slider extends React.Component<
           key={"s_" + this.curWatchCount + nextWatchProp}
           appear={slideOnAppear || noNullOrUndefined(prevWatchProp)}
           parentRef={this.selfRef}
-          childStyles={childStyles}
+          childStyles={preparedChildStylesEnter}
           fadeOnSlide={fadeOnSlide}
           sizePercentageDuringSlide={sizePercentageDuringSlide}
           timeout={enterTimeout}
@@ -196,9 +200,9 @@ export default class Slider extends React.Component<
         </TransitioningComponent>
       );
     }
-    const preparedChildProps: ISliderChildStyles = {
+    const preparedChildStylesExit: ISliderChildStyles = {
       ...childStyles,
-      zIndex: -1
+      zIndex: 1
     };
     if (
       noNullOrUndefined(prevWatchProp) &&
@@ -212,7 +216,7 @@ export default class Slider extends React.Component<
           key={"s_" + this.prevWatchCount + prevWatchProp}
           appear={true}
           parentRef={this.selfRef}
-          childStyles={preparedChildProps}
+          childStyles={preparedChildStylesExit}
           fadeOnSlide={fadeOnSlide}
           sizePercentageDuringSlide={sizePercentageDuringSlide}
           timeout={exitTimeout}
