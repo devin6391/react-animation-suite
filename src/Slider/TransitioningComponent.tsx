@@ -228,7 +228,10 @@ export default class TransitioningComponent extends React.Component<
     transitioningComponentChildProps: ITransitioningComponentChildProps
   ): JSX.Element {
     return (
-      <TransitioningComponentChild {...transitioningComponentChildProps} />
+      <TransitioningComponentChild
+        {...transitioningComponentChildProps}
+        enter={this.props.enter}
+      />
     );
   }
 

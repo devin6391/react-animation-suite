@@ -51,7 +51,7 @@ interface ISliderState {
  * @prop sizePercentageDuringSlide - % of size which should be on screen. Useful only with fadeOnSlide prop. Optional.
  * @prop transitionDone - Transition done callback. Optional.
  */
-export default class Slider extends React.PureComponent<
+export default class Slider extends React.Component<
   ISliderProps,
   ISliderState
 > {
@@ -82,6 +82,14 @@ export default class Slider extends React.PureComponent<
       prevChildProps: null,
       prevWatchProp: null
     };
+  }
+
+  public shouldComponentUpdate(nextProps: ISliderProps): boolean {
+    const validTransitionCycleState =
+      this.transitionCycle === SliderCycleState.Full ||
+      this.transitionCycle === SliderCycleState.Start;
+    const isWatchPropDifferent = this.props.watchProp !== nextProps.watchProp;
+    return validTransitionCycleState && isWatchPropDifferent;
   }
 
   public render() {
@@ -168,6 +176,10 @@ export default class Slider extends React.PureComponent<
       100;
     const exitTimeout =
       (childStyles.transitionTime || childStyles.exitTransitionTime || 1) * 100;
+    const preparedChildStylesEnter: ISliderChildStyles = {
+      ...childStyles,
+      zIndex: 2
+    };
     if (noNullOrUndefined(nextWatchProp) && nextChildProps) {
       clonedElems.push(
         <TransitioningComponent
@@ -176,7 +188,7 @@ export default class Slider extends React.PureComponent<
           key={"s_" + this.curWatchCount + nextWatchProp}
           appear={slideOnAppear || noNullOrUndefined(prevWatchProp)}
           parentRef={this.selfRef}
-          childStyles={childStyles}
+          childStyles={preparedChildStylesEnter}
           fadeOnSlide={fadeOnSlide}
           sizePercentageDuringSlide={sizePercentageDuringSlide}
           timeout={enterTimeout}
@@ -186,7 +198,10 @@ export default class Slider extends React.PureComponent<
         </TransitioningComponent>
       );
     }
-    const preparedChildProps : ISliderChildStyles = {...childStyles, zIndex:-1};
+    const preparedChildStylesExit: ISliderChildStyles = {
+      ...childStyles,
+      zIndex: 1
+    };
     if (
       noNullOrUndefined(prevWatchProp) &&
       prevWatchProp !== nextWatchProp &&
@@ -199,7 +214,7 @@ export default class Slider extends React.PureComponent<
           key={"s_" + this.prevWatchCount + prevWatchProp}
           appear={true}
           parentRef={this.selfRef}
-          childStyles={preparedChildProps}
+          childStyles={preparedChildStylesExit}
           fadeOnSlide={fadeOnSlide}
           sizePercentageDuringSlide={sizePercentageDuringSlide}
           timeout={exitTimeout}
