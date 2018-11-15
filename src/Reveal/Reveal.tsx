@@ -50,7 +50,7 @@ export default class Reveal extends React.Component<IRevealPropType, any> {
                   this.enterTimingFunction
                 }, opacity ${this.enterTransitionTime}s ${
                   this.enterTimingFunction
-                } ${this.enterTransitionTime / 2}s`
+                }`
               };
               break;
             case "exiting":
@@ -61,7 +61,7 @@ export default class Reveal extends React.Component<IRevealPropType, any> {
                   this.exitTimingFunction
                 }, opacity ${this.exitTransitionTime}s ${
                   this.exitTimingFunction
-                } ${this.exitTransitionTime / 2}s`
+                }`
               };
               break;
             case "exited":
