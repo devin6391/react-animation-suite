@@ -9,6 +9,7 @@ export interface IRevealPropType {
   fixedDistance?: number;
   childStyles: IRevealChildStyles;
   mountUnmountAuthority?: boolean;
+  revealOnAppear?: boolean;
 }
 
 /**
@@ -22,7 +23,13 @@ export interface IRevealPropType {
 export default class Reveal extends React.Component<IRevealPropType, any> {
   public render() {
     this.checkBeforeRender();
-    const { show, mountUnmountAuthority, children, withFade } = this.props;
+    const {
+      show,
+      mountUnmountAuthority,
+      children,
+      withFade,
+      revealOnAppear
+    } = this.props;
     return (
       <Transition
         in={show}
@@ -32,6 +39,7 @@ export default class Reveal extends React.Component<IRevealPropType, any> {
           enter: 1,
           exit: this.exitTransitionTime * 1000
         }}
+        appear={revealOnAppear || false}
       >
         {state => {
           let wrapperStyle;
