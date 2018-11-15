@@ -1,0 +1,263 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>react-animation-suite</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">react-animation-suite</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> react-animation-suite</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<p><a href="https://travis-ci.org/devin6391/react-animation-suite"><img src="https://travis-ci.org/devin6391/react-animation-suite.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/devin6391/react-animation-suite"><img src="https://coveralls.io/repos/github/devin6391/react-animation-suite/badge.svg" alt="Coverage Status"></a> <a href="https://badge.fury.io/js/react-animation-suite"><img src="https://badge.fury.io/js/react-animation-suite.svg" alt="npm version"></a></p>
+				<h1 id="react-animation-suite">React Animation Suite</h1>
+				<h2 id="finally-an-animation-library-which-is-developer-friendly-">Finally an animation library which is developer friendly!</h2>
+				<p>This is a customisable developer-friendly library for animating react components. This library is unopinionated about what should be the theory of animation, rather it focuses on how it should be implemented in React.</p>
+				<h2 id="usage">Usage</h2>
+				<h4 id="install">Install</h4>
+				<pre><code>npm <span class="hljs-selector-tag">i</span> react-<span class="hljs-attribute">animation</span>-suite -g
+    OR
+yarn add react-<span class="hljs-attribute">animation</span>-suite
+</code></pre><h4 id="importing">Importing</h4>
+				<pre><code><span class="hljs-keyword">import</span> { Slider } <span class="hljs-keyword">from</span> <span class="hljs-string">"react-animation-suite"</span>
+    OR
+<span class="hljs-keyword">import</span> { Slider } <span class="hljs-keyword">from</span> <span class="hljs-string">"react-transition-suite/dist/lib/Slider"</span>
+</code></pre><h4 id="using">Using</h4>
+				<p>Say you have a component whose JSX is like below:</p>
+				<pre><code><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"container"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">WannabeSlider</span> </span></span><span class="hljs-template-variable">{...props}</span><span class="xml"><span class="hljs-tag"> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+</code></pre><p>Now you can slide the WannabeSlider like this:</p>
+				<pre><code><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"container"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">Slider</span> </span></span><span class="hljs-template-variable">{...sliderProps}</span><span class="xml"><span class="hljs-tag"> <span class="hljs-attr">direction</span>=</span></span><span class="hljs-template-variable">{0}</span><span class="xml"><span class="hljs-tag"> <span class="hljs-attr">childProps</span>=</span></span><span class="hljs-template-variable">{{height: 100, width: 100, transitionTime: 300}</span><span class="xml"><span class="hljs-tag">}&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">WannabeSlider</span> </span></span><span class="hljs-template-variable">{...props}</span><span class="xml"><span class="hljs-tag"> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Slider</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+</code></pre><h2 id="prior-learnings-required-from-a-developer-implementing-it-">Prior learnings required from a developer implementing it:</h2>
+				<ul>
+					<li>ReactJS</li>
+					<li>Javascript</li>
+					<li><p>CSS</p>
+						<p><strong> Yes, that’s it! </strong></p>
+					</li>
+				</ul>
+				<blockquote>
+					<p>You don’t need to know complicated physics concepts like spring, animation basics, using react component&#39;s lifecycle methods, nothing! Just plug and play.</p>
+				</blockquote>
+				<h2 id="problem-statement">Problem Statement</h2>
+				<ul>
+					<li>Animation libraries are very opinionated about how animations should be done, how to implement timings, stiffness, etc.</li>
+					<li>Almost all libraries require a lot of learning before implementing.</li>
+					<li>Animation libraries tend to do magic underneath, reading their source code is a difficult task if you want to know their internal working. So it is difficult to contribute in them.</li>
+					<li>Implementing any animation library requires a developer to implement it from starting phase of development of target component. Implementing a library in the middle or end stage of development is very tough.</li>
+					<li>Some animation libraries create dom element and try to handle async processes. This should ideally be a part of developer’s app.</li>
+				</ul>
+				<h3 id="solution-proposed-in-this-library-">Solution proposed in this library:</h3>
+				<ul>
+					<li>Do not create DOM elements for consumer(developer implementing this library), many Slider libraries do so.</li>
+					<li>Do not handle dom events, observables, timeouts or any async operation for consumer. If something can cause bad user experience then throw an error or give a warning.</li>
+					<li>Take least data from consumer.</li>
+					<li>Provide more control to consumer.</li>
+					<li>Taking data or providing controls should be done only through props. In case of HOCs, it should be simple json config data.</li>
+					<li>Animation should be generic for any scenario that a developer may face, but it should be specific for a particular animation type, ex. Slider.</li>
+					<li>Expressing the implementation of animation should be as easy as possible, preferably plain js or css properties should be written.</li>
+					<li><strong>Most important of all</strong> - Applying animation should be like decorating a component. Animation components should not affect the logic of developer&#39;s component and it should not be thought prior to development of any component.</li>
+					<li><a href="https://codesandbox.io/embed/7377yqr9vj">Checkout the codesandbox</a>. Keep your eyes on two components - <em>SliderWithAnimation</em> and <em>SliderWithoutAnimation</em>. Just check the render method of both(rest of the code is just any other react typescript app). Check how <em>SingleElement</em> is written in both, and you will know how easy it is to implement <em>Slider</em> provided from this library.</li>
+				</ul>
+				<h4 id="try-it-out-yourself-">Try it out yourself:</h4>
+				<p><a href="https://codesandbox.io/s/7377yqr9vj"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit 7377yqr9vj"></a></p>
+				<h4 id="documentations-exported-components-">Documentations exported components:</h4>
+				<ul>
+					<li><a href="/src/Slider/README.md">Slider</a></li>
+				</ul>
+				<h1 id="features">Features</h1>
+				<ul>
+					<li>For now we have only Slider component.</li>
+				</ul>
+				<h3 id="tech">Tech</h3>
+				<ul>
+					<li><a href="https://reactjs.org/">ReactJS</a> - Obvious!</li>
+					<li><a href="https://reactcommunity.org/react-transition-group/">React Transition Group</a> - This library is being used internally. This is a transition state management library and is very simple. Please read about how to use this in <a href="CONTRIBUTING.md">CONTRIBUTING.md</a>.</li>
+					<li><a href="https://www.typescriptlang.org/">Typescript</a> - This won&#39;t be downloaded as dependency, but just to point out - I am using typescript and I would suggest other developers to use typescript as it makes life so good!!!</li>
+				</ul>
+				<h5 id="don-t-get-intimidated-by-typescript-if-you-don-t-know-it-you-can-use-this-library-in-your-plain-javascript-project-too-">Don&#39;t get intimidated by typescript if you don&#39;t know it. You can use this library in your <strong>plain javascript</strong> project too!</h5>
+				<blockquote>
+					<p>Note -- There is no flow implementation as of now but if someone can contribute for that, it will be great.</p>
+				</blockquote>
+				<h4 id="want-to-contribute-great-">Want to contribute? Great!</h4>
+				<p>Please read <a href="CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
+				<h4 id="special-thanks-to-typescript-library-starter-for-simplifying-the-process-to-create-a-javascript-library-with-typescript-">Special thanks to <a href="https://github.com/alexjoverm/typescript-library-starter">TypeScript library starter</a> for simplifying the process to create a javascript library with typescript.</h4>
+				<h2 id="author-vineet-dev">Author - <a href="mailto:vineetdev2008@gmailcom">Vineet Dev</a></h2>
+				<p>I am currently working in Microsoft and I am a big enthusiast of javascript.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_reveal_reveal_.html">"<wbr>Reveal/<wbr>Reveal"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_reveal_index_.html">"<wbr>Reveal/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_reveal_types_.html">"<wbr>Reveal/types"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_slider_slider_.html">"<wbr>Slider/<wbr>Slider"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_slider_transitioningcomponent_.html">"<wbr>Slider/<wbr>Transitioning<wbr>Component"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_slider_transitioningcomponentchild_.html">"<wbr>Slider/<wbr>Transitioning<wbr>Component<wbr>Child"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_slider_index_.html">"<wbr>Slider/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_slider_styles_.html">"<wbr>Slider/styles"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_slider_types_.html">"<wbr>Slider/types"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_slider_utils_.html">"<wbr>Slider/utils"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_index_.html">"index"</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
