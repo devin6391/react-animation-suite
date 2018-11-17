@@ -1,17 +1,21 @@
-export type cssUnitTypes =
-  | "px"
-  | "mm"
+export type elementUnit = "em" | "ch" | "ex";
+
+export type percentUnitType = "%";
+
+export type normalLengthUnit =
   | "cm"
   | "in"
-  | "pt"
+  | "mm"
   | "pc"
-  | "em"
-  | "ex"
-  | "ch"
+  | "pt"
+  | "px"
   | "rem"
-  | "vw"
   | "vh"
-  | "%";
+  | "vmax"
+  | "vmin"
+  | "vw";
+
+export type cssUnitTypes = elementUnit | percentUnitType | normalLengthUnit;
 
 export interface ISliderChildStyles {
   // Width of child element of Slider component.
